@@ -1,10 +1,43 @@
+/**************************************************
+- Custom CSS
+/**************************************************/
 
 .nav-right{
   text-align: right;
 }
 .centerLayout{
-  margin:10% 30%;
-  border-radius:8px;
-  padding:2%;
   box-shadow: 1px 1px 1px  2px  rgba(0, 0, 0, 0.5);
+}
+
+.banner{
+  background-color:blue;
+  color:#fff;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 900;
+  margin: 2%;
+}
+
+img, svg {
+    vertical-align: middle;
+    margin: 20px;
+}
+
+h1{
+  font-weight: 900;
+  letter-spacing: 10px;
+}
+
+.smallText{
+  letter-spacing:12px;
+  margin-top: -10px
+
+}
+/**************************************************
+- responsive CSS
+/**************************************************/
+
+@media only screen and (max-width: 630px) {
+  .centerLayout{
+    margin:10%;
 }
