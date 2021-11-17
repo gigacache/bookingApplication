@@ -15,3 +15,17 @@
     <meta charset="utf-8">
   </head>
 <body>
+<nav>
+  <div class="row py-2 px-5">
+    <div class="col-sm-6">
+	     <h1>Book Online</h1>
+			  <p class="smallText">in three easy step</p>
+	   </div>
+    <div class="col-sm-6 py-2">
+      <ul>
+        <li><a href="#">Login</a>
+        <li><a href="#">Register</a>
+      </ul>
+    </div>
+  </div>
+</nav>
