@@ -15,17 +15,22 @@
     <meta charset="utf-8">
   </head>
 <body>
-<nav>
-  <div class="row py-2 px-5">
-    <div class="col-sm-6">
-	     <h1>Book Online</h1>
-			  <p class="smallText">in three easy step</p>
-	   </div>
-    <div class="col-sm-6 py-2">
-      <ul>
-        <li><a href="#">Login</a>
-        <li><a href="#">Register</a>
-      </ul>
-    </div>
-  </div>
-</nav>
+  <nav class="navbar navbar-expand-md navbar-light py-2 px-5">
+        <a class="navbar-brand" href="<?php echo base_url();?>"><h1>Smart Booking System</h1></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="<?php echo base_url();?>">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Disabled</a>
+            </li>
+          </ul>
+        </div>
+      </nav>

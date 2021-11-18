@@ -9,7 +9,6 @@ ul li{
 }
 ul li{
   display: inline-block;
-  margin:0 2%;
 }
 
 ul li a{
@@ -24,7 +23,7 @@ img, svg {
 
 h1{
   font-weight: 900;
-  letter-spacing: 10px;
+  font-size: 1.2rem;
 }
 
 .smallText{
@@ -78,6 +77,10 @@ h1{
   width:100%;
   height:auto;
 }
+
+a.nav-link {
+    font-weight: 900;}
+
 /**************************************************
 - responsive CSS
 /**************************************************/
