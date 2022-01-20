@@ -1,6 +1,10 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 <!-- Welcom Page for users to login in or register to make an appiontment -->
 <div class="container my-5 mx-5">
+	<div class="row center">
+		<p>DAN</p>
+		<?php echo $this->session->flashdata('message')?>
+	</div>
 	<div class="row">
 		<div class="col-md-7">
 				<img src="./public/images/booking.svg"/ class="largeImage">

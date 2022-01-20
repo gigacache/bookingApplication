@@ -17,6 +17,10 @@ class Welcome extends CI_Controller {
 
 	public function registerUser(){
 		$this->Welcome_model->signUp();
+		$this->session->set_flashdata('message','Thankyou for regestring. Your account has now been actived and you can login.');
 		redirect('');
+
 	}
+
+
 }
