@@ -6,20 +6,20 @@
 
 class Welcome_model extends CI_Model{
 
-//  public function verify(){
-//    $data['username'] = $this->input->post('username');
-//    $data['password'] = $this->input->post('password');
-//    return $this->db->get_where('users' , $data)->row();
-//  }
+  public function verify(){
+    $data['email'] = $this->input->post('email');
+    $data['password'] = $this->input->post('password');
+    return $this->db->get_where('users' , $data)->row();
+  }
 
-//  public function getUserId(){
-  //  $username = $this->input->post('username');
-  //  $this->db->select('GUID');
-  //  $this->db->from('users');
-  //  $this->db->where('username',  $username);
-  //  $query=$this->db->get()->row()->GUID;
-  //  return $query;
-  //}
+public function getUserId(){
+   $email = $this->input->post('email');
+    $this->db->select('GUID');
+    $this->db->from('users');
+    $this->db->where('email',  $email);
+    $query=$this->db->get()->row()->GUID;
+    return $query;
+  }
 
   public function signUp(){
     $name = $this->input->post('name');
@@ -37,5 +37,16 @@ class Welcome_model extends CI_Model{
     );
     return $this->db->insert('users',$data);
     }
+
+
+
+
+
+
+
+
+
+
+
 
 } // End of CI_Model

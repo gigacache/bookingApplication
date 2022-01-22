@@ -81,6 +81,14 @@ h1{
 a.nav-link {
     font-weight: 900;}
 
+
+.brand{
+  display: inline-block;
+  letter-spacing: 5px;
+}
+
+
+
 /**************************************************
 - responsive CSS
 /**************************************************/
