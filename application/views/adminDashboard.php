@@ -1,9 +1,8 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');?>
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
   <div class="row">
     <div class="col-sm-6">
       <div class="card">
-        <h5 class="card-header">Featured</h5>
+        <h5 class="card-header">ADMIN</h5>
         <div class="card-body">
           <h5 class="card-title">Special title treatment</h5>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -22,6 +21,3 @@
       </div>
     </div>
   </div>
-</main>
-      </div>
-    </div>

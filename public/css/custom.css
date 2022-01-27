@@ -2,6 +2,12 @@
 - Custom CSS
 /**************************************************/
 
+
+
+/**h1{
+  font-weight: 900;
+  font-size: 1.2rem;
+}**\\|\\|
 ul li{
     list-style: none;
     vertical-align: bottom;
@@ -15,16 +21,11 @@ ul li a{
     text-decoration: none;
     padding: 0 2%;
 
-}
-img, svg {
-    vertical-align: middle;
-    margin: 20px;
-}
-
-h1{
-  font-weight: 900;
-  font-size: 1.2rem;
-}
+}   //a.nav-link {
+    font-weight: 900;}  img, svg {
+        vertical-align: middle;
+        margin: 20px;
+    }**/
 
 .smallText{
   letter-spacing:12px;
@@ -78,8 +79,7 @@ h1{
   height:auto;
 }
 
-a.nav-link {
-    font-weight: 900;}
+
 
 
 .brand{

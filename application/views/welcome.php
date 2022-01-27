@@ -1,4 +1,9 @@
-<?php defined('BASEPATH') or exit('No direct script access allowed');?>
+<?php defined('BASEPATH') or exit('No direct script access allowed');
+if($this->session->login==TRUE){
+  redirect('dashboard');
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
    <!-- Links -->
