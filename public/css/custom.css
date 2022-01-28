@@ -2,7 +2,14 @@
 - Custom CSS
 /**************************************************/
 
+nav.col-md-2.d-none.d-md-block.bg-light.sidebar {
+    height: 100vh;
+}
 
+main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4 {
+    height: 80vh;
+    overflow: scroll;
+}
 
 /**h1{
   font-weight: 900;

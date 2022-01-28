@@ -21,7 +21,7 @@
 
 /* (B) CONTAINER */
 .picker {
-  max-width: 300px;
+  max-width: 100%;
   border: 1px solid #eee;
   background: #fafafa;
   padding: 10px;
