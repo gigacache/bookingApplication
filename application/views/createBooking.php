@@ -17,7 +17,6 @@
        <h3>Select Date</h3>
           <div id="pick-inline" class="my-4"></div>
           <input type="text" id="input-inline" placeholder="Selected Date" name="date">
-
      </div>
 
      <div class="col-sm-6 my-4">

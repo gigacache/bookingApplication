@@ -12,6 +12,7 @@
     <link  rel="stylesheet" href="<?php echo base_url();?>public/css/bootstrap.min.css">
     <link  rel="stylesheet" href="<?php echo base_url();?>public/css/custom.css">
     <link rel="stylesheet" href="<?php echo base_url();?>public/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>public/css/dp-light.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>public/css/dp-light.css">
   <meta charset="utf-8">
   </head>
