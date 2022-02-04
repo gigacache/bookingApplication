@@ -14,7 +14,7 @@ class Welcome_model extends CI_Model{
 
 public function getUserId(){
    $email = $this->input->post('email');
-    $this->db->select('GUID');
+    $this->db->select('userID');
     $this->db->from('users');
     $this->db->where('email',  $email);
     $query=$this->db->get()->row()->GUID;

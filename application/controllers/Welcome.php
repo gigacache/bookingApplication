@@ -9,21 +9,31 @@ class Welcome extends CI_Controller {
 	}
 	public function index()
 	{
-		$this->load->view('welcome');
+		$this->load->view('index');
 	}
 
 	public function verify(){
 		$check=$this->Welcome_model->verify();
 		if($check){
+			$isAdmin = FALSE;
 			$userId =$this->Welcome_model->getUserId();
 			$email = $this->input->post('email');
+
+			if($email=='admin@admin.com'){
+				$isAdmin= TRUE;}
+
 			$arraydata = array(
 						'userID'  => $userId,
 						'email'  => $email,
+						'isAdmin'  => $isAdmin,
 						'login'     => TRUE);
 			$this->session->set_userdata($arraydata);
-			redirect('dashboard');
 
+			if($this->session->isAdmin){
+				redirect('admin');
+			}else{
+				redirect('dashboard');
+			}
 		}
 		else{
 			$this->session->set_flashdata('eroMessage',' Invalid email or password');
@@ -44,20 +54,17 @@ class Welcome extends CI_Controller {
 
 
 	public function dashboard(){
-		if($this->session->email=='ADMIN@ADMIN.com'){
-			$data['main_view'] = 'adminDashboard';
-		}
-		else{
 		$data['main_view'] = 'dashboard';
-		}
+		$this->load->view('template', $data);
+	}
+
+	public function adminDashboard(){
+		$data['main_view'] = './admin/adminDashboard';
 		$this->load->view('template', $data);
 	}
 
 
-	public function createBooking(){
-			$data['main_view'] = 'createBooking';
-			$this->load->view('template', $data);
-	}
+
 
 
 }
