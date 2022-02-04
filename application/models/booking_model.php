@@ -21,7 +21,17 @@ class Booking_model extends CI_Model{
       'status'=> $status,
     );
     return $this->db->insert('bookings',$data);
-    } 
+    }
+
+
+    public function getUsersBooking(){
+      $userID = $this->session->userdata('userID');
+      $this->db->select('*');
+      $this->db->from('bookings');
+      $this->db->where('userID',$userID);
+      $query=$this->db->get();
+      return $query;
+    }
 
 
 

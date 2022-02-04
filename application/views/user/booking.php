@@ -4,10 +4,9 @@
      <h1>Booking Overview</h1>
      <p>Simply select a service, date and anytimes you would like to have your appiontment, then hit submit request</p>
      <hr/>
-
-       <div class="container">
+    <div class="container">
          <div class="row">
-         <div class="col-sm-6 shadow-lg p-3 mb-5 bg-body rounded">
+         <div class="col-sm-6 shadow-lg p-3 mb-5 bg-body rounded customHeight">
            <div class="tab-content">
               <div class="tab-pane active py-3" id="bookings">
                 <h3>Bookings</h3>
@@ -22,11 +21,12 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <?php foreach ($bookingData->result() as $row) {?>
                     <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
+                      <td><?php echo $row->service;?></td>
+                      <td><?php echo $row->bookingDate;?></td>
+                      <td><?php echo $row->bookingTimes;?></td>
+                      <td><?php echo $row->status;?></td>
                       <td><button type="button" class="btn btn-danger">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-x" viewBox="0 0 16 16">
                           <path d="M6.146 7.146a.5.5 0 0 1 .708 0L8 8.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 9l1.147 1.146a.5.5 0 0 1-.708.708L8 9.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 9 6.146 7.854a.5.5 0 0 1 0-.708z"/>
@@ -37,6 +37,7 @@
 
 
                     </tr>
+                  <?php }?>
                   </tbody>
                 </table>
               </div>
