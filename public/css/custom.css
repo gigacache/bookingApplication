@@ -111,6 +111,21 @@ ul li a{
   border-radius: 0 0 8px 8px;
 }
 
+h4{
+  font-size: 18px;
+font-weight: 500;
+}
+button.btn.dropdown-toggle.btn-light {
+    margin: 2% 0;
+}
+
+#bookings{
+    padding: 0 2%;
+}
+
+#request {
+    padding: 0 2%;
+}
 
 .largeImage{
   width:100%;

@@ -4,12 +4,13 @@
      <h1>Booking Overview</h1>
      <p>Simply select a service, date and anytimes you would like to have your appiontment, then hit submit request</p>
      <hr/>
+
        <div class="container">
          <div class="row">
          <div class="col-sm-6 shadow-lg p-3 mb-5 bg-body rounded">
            <div class="tab-content">
-              <div class="tab-pane active py-3" id="confirmed">
-                <h3>Comfirmed Bookings</h3>
+              <div class="tab-pane active py-3" id="bookings">
+                <h3>Bookings</h3>
                 <table class="table">
                   <thead class="thead-dark">
                     <tr>
@@ -39,51 +40,38 @@
                   </tbody>
                 </table>
               </div>
-              <div class="tab-pane py-3" id="requested">
-                  <form method="post" action=<?php echo site_url('Welcome/registerUser')?>>
-                    <div class="form-group">
-                      <label for="name">Name</label>
-                      <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="John Doe" name="name">
-                      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              <div class="tab-pane py-3" id="request">
+                  <form method="post" action=<?php echo site_url('Booking_Controller/addBooking')?>>
+                    <div class="input-group">
+                      <h4>Select a service</h4>
+                      <select class="selectpicker" name="service" data-width="100%" data-dropup-auto="false">
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                      </select>
                     </div>
-                  <div class="form-group">
-                    <label for="Email">Email address</label>
-                    <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email" name="email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                     <h4>Select a date</h4>
+                    <div id="pick-inline"></div>
+                      <input type="text" id="input-inline" placeholder="Selected Date" name="date">
+                      <div class="input-group">
+                         <h4>Select upto four times</h4>
+                        <select id="timeLoop" class="selectpicker" multiple name="times[]" data-width="100%" data-max-options="4" ></select>
+                      </div>
+                      <input value="<?php print_r($this->session->userID);?>" style="display:none;">
+                      <button type="submit" class="btn btn-primary btn-lg btn-block">Submit Booking Request</button>
+                    </form>
                   </div>
-                  <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="*********" name="password">
-                    <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
-                  </div>
-                  <div class="form-group">
-                    <label for="address">Address</label>
-                    <input type="text" class="form-control" id="adress" aria-describedby="adress" placeholder="All Saints, All Saints Building, Manchester" name="address">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                  </div>
-                  <div class="form-group">
-                    <label for="post">Postcode</label>
-                    <input type="text" class="form-control" id="post" aria-describedby="post" placeholder="M1 6AA" name=postcode>
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Login</button>
-                </form>
+                </div>
               </div>
-            </div>
-
-          </div>
-
-          <div class="col-sm-6 py-5 px-5">
+        <div class="col-sm-6 py-5 px-5">
           <ul class="nav nav-tabs" id="customTab" role="tablist">
-            <li><a href="#confirmed" data-toggle="tab" class="nav-link active">Confirmed</a></li>
-            <li><a href="#requested" data-toggle="tab" class="nav-link">Requested</a></li>
-            <li><a href="" class="nav-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-plus" viewBox="0 0 16 16">
-                <path d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z"/>
-                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-              </svg>
-              Create a Booking</a></li>
+            <li><a href="#bookings" data-toggle="tab" class="nav-link active">Bookings</a></li>
+            <li><a href="#request" data-toggle="tab" class="nav-link">Create a Booking</a></li>
           </ul>
+          <?php if($this->session->flashdata('susMessage')==""){}else{
+            echo "<div class='alert alert-success my-5' role='alert'>";
+            echo $this->session->flashdata('susMessage') ;
+            echo "</div>" ;}?>
         </div>
 
 
@@ -91,3 +79,12 @@
      </div>
    </div>
  </div>
+
+ <script>
+ window.addEventListener("load", () => {
+   picker.attach({
+     target: "input-inline",
+     container: "pick-inline"
+   });
+ });
+ </script>

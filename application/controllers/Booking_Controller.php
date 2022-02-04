@@ -5,7 +5,7 @@ class Booking_Controller extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		//$this->load->model('Welcome_model');
+				$this->load->model('Booking_model');
 	}
 	public function index()
 	{
@@ -21,6 +21,14 @@ class Booking_Controller extends CI_Controller {
 	public function bookingOverview(){
 			$data['main_view'] = './user/booking';
 			$this->load->view('template', $data);
+	}
+
+
+	public function addBooking(){
+		$this->Booking_model->addBooking();
+		$this->session->set_flashdata('susMessage','Booking Request has been regiester. Our system will auto finalise requests within 24 hours.');
+		redirect('bookings');
+
 	}
 
 

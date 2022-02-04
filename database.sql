@@ -18,7 +18,7 @@ CREATE TABLE bookings(
   FOREIGN KEY (userID) REFERENCES users(userID),
   service varchar(255),
   bookingDate DATE,
-  bookingTimes TIME,
+  bookingTimes varchar(255),
   status varchar(255)
 );
 

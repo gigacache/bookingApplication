@@ -1,5 +1,4 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');?>
-<?php print_r($this->session->isAdmin)?>
   <div class="row">
     <div class="col-sm-6">
       <div class="card">
