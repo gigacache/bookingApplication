@@ -65,6 +65,7 @@ class Welcome extends CI_Controller {
 
 
 	public function userDetails(){
+		$data['userDetails']= $this->Welcome_model->getUserDetails();
 		$data['main_view'] = './user/userDetails';
 		$this->load->view('template', $data);
 	}

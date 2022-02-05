@@ -34,6 +34,27 @@ a.nav-link {
     /* border-radius: 8px; */
     font-weight: 900;}
 
+
+    .navbar-nav {
+        display: flex;
+        flex-direction:unset !important;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+    }
+  .navbar{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;}
+
+    .navbar-brand {
+        margin-right: 0 !important;
+        font-size: 20pt;
+        font-weight: 900;
+      color:#fff;}
+
+      .navbar-brand:hover {
+        color:#006DFF;}
+
 /**h1{
   font-weight: 900;
   font-size: 1.2rem;

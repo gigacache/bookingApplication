@@ -39,6 +39,16 @@ public function getUserId(){
     }
 
 
+    public function getUserDetails(){
+      $userID = $this->session->userdata('userID');
+      $this->db->select('*');
+      $this->db->from('users');
+      $this->db->where('userID',$userID);
+      $query=$this->db->get();
+      return $query;
+    }
+
+
 
 
 

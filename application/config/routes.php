@@ -64,3 +64,4 @@ $route['profile'] = 'welcome/userDetails';
 // BOOKING ROUTES //
 $route['newbooking'] = 'booking_controller/createBooking';
 $route['bookings'] = 'booking_controller/bookingOverview';
+$route['adminbookings'] = 'booking_controller/adminBooking';

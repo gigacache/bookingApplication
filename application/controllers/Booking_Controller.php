@@ -36,6 +36,14 @@ class Booking_Controller extends CI_Controller {
 		redirect('bookings');
 	}
 
+	public function adminBooking(){
+		$data["allBookingData"] = $this->Booking_model->allBookings();
+		$data['main_view'] = './admin/adminBooking';
+		$this->load->view('template', $data);
+	}
+
+
+
 
 
 }

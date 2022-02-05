@@ -42,6 +42,12 @@ class Booking_model extends CI_Model{
 
 
 
+        public function allBookings(){
+          $this->db->select('*');
+          $this->db->from('bookings');
+          $query=$this->db->get();
+          return $query;
+        }
 
 
 
