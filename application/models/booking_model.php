@@ -33,6 +33,13 @@ class Booking_model extends CI_Model{
       return $query;
     }
 
+    public function cancelBooking(){
+      $userID = $this->session->userdata('userID');
+      $bookingID = $this->input->post('bookingID');
+      $this->db->where('bookingID', $bookingID);
+      $this->db->delete('bookings');
+    }
+
 
 
 

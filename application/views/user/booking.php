@@ -6,7 +6,7 @@
      <hr/>
     <div class="container">
          <div class="row">
-         <div class="col-sm-6 shadow-lg p-3 mb-5 bg-body rounded customHeight">
+         <div class="col-sm-8 shadow-lg p-3 mb-5 bg-body rounded customHeight">
            <div class="tab-content">
               <div class="tab-pane active py-3" id="bookings">
                 <h3>Bookings</h3>
@@ -25,17 +25,23 @@
                     <tr>
                       <td><?php echo $row->service;?></td>
                       <td><?php echo $row->bookingDate;?></td>
-                      <td><?php echo $row->bookingTimes;?></td>
+                      <td><?php
+                      if(substr_count($row->bookingTimes, ",") > 0) {
+                        echo "Not finalised";
+                      }else{ echo $row->bookingTimes;}?></td>
                       <td><?php echo $row->status;?></td>
-                      <td><button type="button" class="btn btn-danger">
+                      <td>
+                      <form method="post" action=<?php echo site_url('Booking_Controller/cancelBooking')?>>
+                          <input value="<?php echo $row->bookingID;?>" name="bookingID" style="display:none;">
+                          <button type="submit" class="btn btn-danger">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-x" viewBox="0 0 16 16">
                           <path d="M6.146 7.146a.5.5 0 0 1 .708 0L8 8.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 9l1.147 1.146a.5.5 0 0 1-.708.708L8 9.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 9 6.146 7.854a.5.5 0 0 1 0-.708z"/>
                           <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
                         </svg>
-                        Cancel</button></td>
+                        Cancel</button>
+                      </form>
 
-
-
+                      </td>
                     </tr>
                   <?php }?>
                   </tbody>
@@ -64,7 +70,7 @@
                   </div>
                 </div>
               </div>
-        <div class="col-sm-6 py-5 px-5">
+        <div class="col-sm-4 py-5 px-5">
           <ul class="nav nav-tabs" id="customTab" role="tablist">
             <li><a href="#bookings" data-toggle="tab" class="nav-link active">Bookings</a></li>
             <li><a href="#request" data-toggle="tab" class="nav-link">Create a Booking</a></li>

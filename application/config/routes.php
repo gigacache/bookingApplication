@@ -54,11 +54,12 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 
-// DASH ROUTES // 
+// DASH ROUTES //
 $route['dashboard'] = 'welcome/dashboard';
 $route['admin'] = 'welcome/adminDashboard';
 
-
+// user ROUTES //
+$route['profile'] = 'welcome/userDetails';
 
 // BOOKING ROUTES //
 $route['newbooking'] = 'booking_controller/createBooking';

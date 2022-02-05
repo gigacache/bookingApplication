@@ -12,7 +12,6 @@ class Booking_Controller extends CI_Controller {
 		$this->load->view('booking');
 	}
 
-
 	public function createBooking(){
 			$data['main_view'] = 'createBooking';
 			$this->load->view('template', $data);
@@ -29,7 +28,12 @@ class Booking_Controller extends CI_Controller {
 		$this->Booking_model->addBooking();
 		$this->session->set_flashdata('susMessage','Booking Request has been regiester. Our system will auto finalise requests within 24 hours.');
 		redirect('bookings');
+	}
 
+	public function cancelBooking(){
+		$this->Booking_model->cancelBooking();
+		$this->session->set_flashdata('susMessage','Booking Request has been cancled.');
+		redirect('bookings');
 	}
 
 
