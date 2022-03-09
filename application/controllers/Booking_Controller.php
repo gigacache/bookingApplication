@@ -6,6 +6,7 @@ class Booking_Controller extends CI_Controller {
 	{
 		parent::__construct();
 				$this->load->model('Booking_model');
+				$this->load->model('Scheduler');
 	}
 	public function index()
 	{
@@ -38,8 +39,13 @@ class Booking_Controller extends CI_Controller {
 
 	public function adminBooking(){
 		$data["allBookingData"] = $this->Booking_model->allBookings();
+		$data["acceptedBookings"] = $this->Booking_model->getAcceptedBookings();
 		$data['main_view'] = './admin/adminBooking';
 		$this->load->view('template', $data);
+	}
+
+	public function createSchedule(){
+		$this->Scheduler->create();
 	}
 
 

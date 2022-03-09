@@ -116,21 +116,7 @@ ul li a{
 
 
 
-#Register{
-  border-left:1px solid #006DFF;
-  border-right:1px solid #006DFF;
-  border-bottom:1px solid #006DFF;
-  padding: 5%;
-  border-radius: 0 0 8px 8px;
-}
 
-#Login{
-  border-left:1px solid #006DFF;
-  border-right:1px solid #006DFF;
-  border-bottom:1px solid #006DFF;
-  padding: 5%;
-  border-radius: 0 0 8px 8px;
-}
 
 h4{
   font-size: 18px;
@@ -183,6 +169,37 @@ button.btn.dropdown-toggle.btn-light {
     border-radius: 0.3rem;
     color:#fff;
 }
+
+.homeTab{
+  margin:  unset !important;
+  border: unset !important;
+  background-color: #006DFF !important;
+  font-size:20pt;
+  border-radius: 0.3rem;
+  padding: 3px 6px !important;
+  color:#fff;
+}
+
+
+.nav-tabs {
+    border-bottom: none !important;
+}
+
+.inline{
+  display: inline;
+}
+
+.adminTab {
+    margin-bottom:  unset !important;
+    border: 1px solid #006DFF !important;
+    background-color: #fff;
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    border-radius: 0.3rem;
+    width: 20% !important;
+    display: inline-block !important;
+}
+
 
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
     color: #fff;

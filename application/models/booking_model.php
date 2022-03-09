@@ -40,14 +40,21 @@ class Booking_model extends CI_Model{
       $this->db->delete('bookings');
     }
 
+    public function allBookings(){
+      $this->db->select('*');
+      $this->db->from('bookings');
+      $this->db->where('status','pending');
+      $query=$this->db->get();
+      return $query;
+    }
 
-
-        public function allBookings(){
-          $this->db->select('*');
-          $this->db->from('bookings');
-          $query=$this->db->get();
-          return $query;
-        }
+    public function getAcceptedBookings(){
+      $this->db->select('*');
+      $this->db->from('bookings');
+      $this->db->where('status','accepted');
+      $query=$this->db->get();
+      return $query;
+    }
 
 
 
