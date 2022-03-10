@@ -31,7 +31,10 @@ foreach ($obj->result_array() as $row)
         $times = $row['bookingTimes'];
         $timesArray = explode(",", $times);
         echo "<br/>";
-        print_r($timesArray);
+        foreach($timesArray as $time){
+            print_r($time);
+        }
+      //  print_r($timesArray);
 
 
         // need to get most pop services
