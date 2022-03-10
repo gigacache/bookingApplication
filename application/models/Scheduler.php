@@ -8,7 +8,8 @@ class Scheduler extends CI_Model{
 
 
 public function create(){
-  $this->getAllRequest();
+  $scheduleObj = $this->getAllRequest();
+  $this->sortSchedule($scheduleObj);
 }
 
 
@@ -17,14 +18,38 @@ public function create(){
     $this->db->from('bookings');
     $this->db->where('status','pending');
     $query=$this->db->get();
-
-    foreach ($query->result() as $row) {
-      print $row->times;
-    }
+    return $query;
   }
 
 
 
+public function sortSchedule($obj){
+print_r($obj->result_array());
+echo "<br/>";
+foreach ($obj->result_array() as $row)
+{
+        $times = $row['bookingTimes'];
+        $timesArray = explode(",", $times);
+        echo "<br/>";
+        print_r($timesArray);
+
+
+        // need to get most pop services
+
+        /// compare and loop times in list
+
+        // with duration of servce
+
+        // them rove and update data base with one time and acsepted
+
+
+
+}
+
+
+
+
+}
 
 
 
