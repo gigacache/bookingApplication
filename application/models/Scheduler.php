@@ -24,32 +24,39 @@ public function create(){
 
 
 public function sortSchedule($obj){
-print_r($obj->result_array());
-echo "<br/>";
-foreach ($obj->result_array() as $row)
-{
+    $timeInTheDay = array();
+    print_r($obj->result_array());
+    echo "<br/>";
+
+    foreach ($obj->result_array() as $row){
         $times = $row['bookingTimes'];
         $timesArray = explode(",", $times);
         echo "<br/>";
-        foreach($timesArray as $time){
-            print_r($time);
-        }
+
+          foreach($timesArray as $time){
+            $timeInTheDay[$row['bookingID']] = $time;
+
+              print_r($time);
+
+          }
+
+
       //  print_r($timesArray);
+// preg_split('/ (PM|AM) /', $time);
+//$arrayname[indexname] = $value
 
 
-        // need to get most pop services
 
-        /// compare and loop times in list
+// time in the day array, key vaules = bookingID and time
 
-        // with duration of servce
 
-        // them rove and update data base with one time and acsepted
+// rules // no dublicates of bookingID // cant be sceadued passed 8-5 // on one day
 
 
 
 }
 
-
+print_r($timeInTheDay);
 
 
 }
