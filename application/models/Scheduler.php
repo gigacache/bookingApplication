@@ -25,6 +25,7 @@ public function create(){
 
 public function sortSchedule($obj){
     $timeInTheDay = array();
+    echo "<br/>";
     print_r($obj->result_array());
     echo "<br/>";
 
@@ -33,12 +34,50 @@ public function sortSchedule($obj){
         $timesArray = explode(",", $times);
         echo "<br/>";
 
+        // Adds times to times with booking ID in array
           foreach($timesArray as $time){
-            $timeInTheDay[$row['bookingID']] = $time;
+            $timeFormat = date('H:i', strtotime($time));
+            $startTime = strtotime($time);
 
-              print_r($time);
+            if($row['service'] == 1){
+                $endTime = date("H:i", strtotime('+30 minutes', $startTime));
+            }
+            else if($row['service'] == 2){
+                $endTime = date("H:i", strtotime('+45 minutes', $startTime));
+            }
+            else if($row['service'] == 3){
+                $endTime = date("H:i", strtotime('+15 minutes', $startTime));
+            }
+
+            echo "<br/> Appiontment:".$row['bookingID'];
+            echo "<br/> Starts ".date('H:i', strtotime($time));
+            echo "<br/> Starts ". $endTime;
+            echo "<br/> Service ".$row['service'];
+
+
+
+
+
+            $timeInTheDay[$row['bookingID']] = $endTime;
+          }
+
+
+
+
+
+
+          // checks for duplicate times
+          $unique = array_unique($timeInTheDay);
+          $duplicates = array_diff_assoc($timeInTheDay, $unique);
+          //print_r($duplicates);
+
+          foreach ($duplicates as $key => $value) {
+            //print($key);
 
           }
+
+
+
 
 
       //  print_r($timesArray);
