@@ -57,13 +57,31 @@
                         <option value="3">Three</option>
                       </select>
                     </div>
+                    <div class="input-group">
+                      <h4>Select upto four times</h4>
+                      <?php
+                                            $start = "08:00"; //you can write here 00:00:00 but not need to it
+                                            $end = "17:00";
+
+                                            $tStart = strtotime($start);
+                                            $tEnd = strtotime($end);
+                                            $tNow = $tStart;
+                                            echo '<select class="selectpicker" multiple name="times[]" data-width="100%" data-max-options="4">';
+                                            while($tNow <= $tEnd){
+                                                echo '<option value="'.date("H:i a",$tNow).'">'.date("H:i a",$tNow).'</option>';
+                                                $tNow = strtotime('+15 minutes',$tNow);
+                                            }
+                                            echo '</select>';
+                                        ?>
+
+                      </div>
                      <h4>Select a date</h4>
                     <div id="pick-inline"></div>
                       <input type="text" id="input-inline" placeholder="Selected Date" name="date">
-                      <div class="input-group">
-                         <h4>Select upto four times</h4>
-                        <select id="timeLoop" class="selectpicker" multiple name="times[]" data-width="100%" data-max-options="4" ></select>
-                      </div>
+
+
+
+
                       <input value="<?php print_r($this->session->userID);?>" style="display:none;">
                       <button type="submit" class="btn btn-primary btn-lg btn-block">Submit Booking Request</button>
                     </form>

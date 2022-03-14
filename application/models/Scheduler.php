@@ -10,6 +10,7 @@ class Scheduler extends CI_Model{
 public function create(){
   $scheduleObj = $this->getAllRequest();
   $this->sortSchedule($scheduleObj);
+  return $this->getSchedule();
 }
 
 
@@ -25,6 +26,7 @@ public function create(){
 
 public function sortSchedule($obj){
     $timeInTheDay = array();
+    $duration = array();
     echo "<br/>";
     print_r($obj->result_array());
     echo "<br/>";
@@ -33,9 +35,10 @@ public function sortSchedule($obj){
         $times = $row['bookingTimes'];
         $timesArray = explode(",", $times);
         echo "<br/>";
-
+        $count =0;
         // Adds times to times with booking ID in array
           foreach($timesArray as $time){
+            $count++;
             $timeFormat = date('H:i', strtotime($time));
             $startTime = strtotime($time);
 
@@ -49,63 +52,41 @@ public function sortSchedule($obj){
                 $endTime = date("H:i", strtotime('+15 minutes', $startTime));
             }
 
-            echo "<br/> Appiontment:".$row['bookingID'];
-            echo "<br/> Starts ".date('H:i', strtotime($time));
-            echo "<br/> Starts ". $endTime;
-            echo "<br/> Service ".$row['service'];
+           echo "<br/> Appiontment:".$row['bookingID'];
+           echo "<br/> Starts ".date('H:i', strtotime($time));
+           echo "<br/> Starts ". $endTime;
+           echo "<br/> Service ".$row['service'];
+           echo "<br/>";
 
+           $this->addToScheduler($row['userID'],$row['bookingDate'],$row['service'],$timeFormat,$endTime);
 
-
-
-
-            $timeInTheDay[$row['bookingID']] = $endTime;
+            $timeInTheDay[$row['bookingID']] = $timeFormat . '-' . $endTime;
           }
-
-
-
-
-
-
-          // checks for duplicate times
-          $unique = array_unique($timeInTheDay);
-          $duplicates = array_diff_assoc($timeInTheDay, $unique);
-          //print_r($duplicates);
-
-          foreach ($duplicates as $key => $value) {
-            //print($key);
-
-          }
-
-
-
-
-
-      //  print_r($timesArray);
-// preg_split('/ (PM|AM) /', $time);
-//$arrayname[indexname] = $value
-
-
-
-// time in the day array, key vaules = bookingID and time
-
-
-// rules // no dublicates of bookingID // cant be sceadued passed 8-5 // on one day
-
-
-
 }
-
 print_r($timeInTheDay);
-
-
+return $timeInTheDay;
 }
 
 
 
+public function addToScheduler($userID,$bookingDate, $service,$startTime, $endTime){
+  $data = array(
+    'userID'=>$userID,
+    'bookingDate'=>$bookingDate,
+    'service'=>$service,
+    'startTime'=>$startTime,
+    'endTime'	=>$endTime,
+    'status'=> 'sechduling'     );
+  return $this->db->insert('Schedule',$data);
+  }
+
+public function getSchedule(){
+  $this->db->select('*');
+  $this->db->from('schedule');
+  $this->db->where('status','sechduling');
+  $query=$this->db->get();
+  return $query;
+}
 
 
-
-
-
-
-  } // End of CI_Model
+} // End of CI_Model

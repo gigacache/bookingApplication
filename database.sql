@@ -22,6 +22,17 @@ CREATE TABLE bookings(
   status varchar(255)
 );
 
+
+CREATE TABLE schedule(
+  scheduleID int(11) PRIMARY KEY AUTO_INCREMENT,
+  userID int(11),
+  bookingDate DATE,
+  service varchar(255),
+  startTime varchar(255),
+  endTime varchar(255),
+  status varchar(255)
+);
+
 INSERT INTO `users` ( `email`,`password`,`name`,`address`,`postcode`)
 VALUES ('admin@admin.com', 'admin', 'admin', '3 Manchester Way' , 'M15 7HJ' );
 
