@@ -25,10 +25,7 @@
                     <tr>
                       <td><?php echo $row->service;?></td>
                       <td><?php echo $row->bookingDate;?></td>
-                      <td><?php
-                      if(substr_count($row->bookingTimes, ",") > 0) {
-                        echo "Not finalised";
-                      }else{ echo $row->bookingTimes;}?></td>
+                      <td><?php echo $row->timeOfDay;?></td>
                       <td><?php echo $row->status;?></td>
                       <td>
                       <form method="post" action=<?php echo site_url('Booking_Controller/cancelBooking')?>>
@@ -58,23 +55,12 @@
                       </select>
                     </div>
                     <div class="input-group">
-                      <h4>Select upto four times</h4>
-                      <?php
-                                            $start = "08:00"; //you can write here 00:00:00 but not need to it
-                                            $end = "17:00";
-
-                                            $tStart = strtotime($start);
-                                            $tEnd = strtotime($end);
-                                            $tNow = $tStart;
-                                            echo '<select class="selectpicker" multiple name="times[]" data-width="100%" data-max-options="4">';
-                                            while($tNow <= $tEnd){
-                                                echo '<option value="'.date("H:i a",$tNow).'">'.date("H:i a",$tNow).'</option>';
-                                                $tNow = strtotime('+15 minutes',$tNow);
-                                            }
-                                            echo '</select>';
-                                        ?>
-
-                      </div>
+                      <h4>Select a time of day</h4>
+                      <select class="selectpicker" name="timeOfDay" data-width="100%" data-dropup-auto="false">
+                        <option value="Morning">Morning</option>
+                        <option value="Afternoon">Afternoon</option>
+                      </select>
+                    </div>
                      <h4>Select a date</h4>
                     <div id="pick-inline"></div>
                       <input type="text" id="input-inline" placeholder="Selected Date" name="date">

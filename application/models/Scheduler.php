@@ -25,89 +25,41 @@ public function create(){
 
 
 public function sortSchedule($obj){
-  $count = 0;
-    $timeInTheDay = array();
-    $duration = array();
-    echo "<br/>";
-    print_r($obj->result_array());
-    echo "<br/>";
-
+  print_r($obj->result_array());
+  echo "<br/>";
+  $startTime = '08:00';
+  $new_time = strtotime($startTime);
     foreach ($obj->result_array() as $row){
-        $times = $row['bookingTimes'];
-        $timesArray = explode(",", $times);
-        echo "<br/>";
-        $count =0;
-        // Adds times to times with booking ID in array
-          foreach($timesArray as $time){
-            $count++;
-            $timeFormat = date('H:i', strtotime($time));
-            $startTime = strtotime($time);
+      
+      $seconds2add =0;
+        if($row['timeOfDay'] == 'Morning'){
 
-            if($row['service'] == 1){
-                $endTime = date("H:i", strtotime('+30 minutes', $startTime));
+          if($row['service'] == 1){
+            $seconds2add = 30*60;}
+
+          if($row['service'] == 2){
+            $seconds2add = 45*60;}
+
+          if($row['service'] == 3){
+            $seconds2add = 60*60;}
+
+          $new_time+=$seconds2add;
+
+
+
+          if (!DateTime::createFromFormat('H:i:', '2017-10-08 17:23')) {
+              echo date('H:i', strtotime($startTime));
+              echo '<br/>';
+              echo date('H:i', strtotime($new_time));
             }
-            else if($row['service'] == 2){
-                $endTime = date("H:i", strtotime('+45 minutes', $startTime));
-            }
-            else if($row['service'] == 3){
-                $endTime = date("H:i", strtotime('+15 minutes', $startTime));
-            }
 
-           echo "<br/> Appiontment:".$row['requestID'];
-           echo "<br/> Starts ".date('H:i', strtotime($time));
-           echo "<br/> Starts ". $endTime;
-           echo "<br/> Service ".$row['service'];
-           echo "<br/>";
+        //  $this->addToScheduler($row['userID'],$row['bookingDate'], $row['service'],$time, $new_time);
 
-           //$this->addToScheduler($row['userID'],$row['bookingDate'],$row['service'],$timeFormat,$endTime);
+          $startTime =+ $new_time;
+        }
 
-            $timeInTheDay[$count][$row['requestID']] = $timeFormat . '-' . $endTime;
-
-
-
-          }
-
-}
-
-
-
-
-
-
-print_r($timeInTheDay);
-$this->sortArray2D($timeInTheDay);
-return $timeInTheDay;
-}
-
-
-
-
-public function sortArray2D($timeInTheDay){
-
-  $previous=0;
-  $keys = array_keys($timeInTheDay);
-for($i = 0; $i < count($timeInTheDay); $i++) {
-    echo $keys[$i] . "{<br>";
-    foreach($timeInTheDay[$keys[$i]] as $key => $value) {
-      $t = explode("-", $value);
-      foreach($t as $tim){
-        if($previous == $tim){
-          echo "<br/>";
-
-        print($tim);
-        echo "<br/>";}
-        $previous = $tim;
       }
-      print_r( $t);
-      //  echo $key . " : " . $value . "<br>";
-        $previous = $value;
-    }
-    echo "}<br>";
 }
-}
-
-
-
 
 
 public function addToScheduler($userID,$bookingDate, $service,$startTime, $endTime){
