@@ -20,14 +20,14 @@ class Booking_model extends CI_Model{
       'bookingTimes'=>$times,
       'status'=> $status,
     );
-    return $this->db->insert('bookings',$data);
+    return $this->db->insert('requests',$data);
     }
 
 
     public function getUsersBooking(){
       $userID = $this->session->userdata('userID');
       $this->db->select('*');
-      $this->db->from('bookings');
+      $this->db->from('requests');
       $this->db->where('userID',$userID);
       $query=$this->db->get();
       return $query;
@@ -36,13 +36,13 @@ class Booking_model extends CI_Model{
     public function cancelBooking(){
       $userID = $this->session->userdata('userID');
       $bookingID = $this->input->post('bookingID');
-      $this->db->where('bookingID', $bookingID);
+      $this->db->where('requestID', $bookingID);
       $this->db->delete('bookings');
     }
 
     public function allBookings(){
       $this->db->select('*');
-      $this->db->from('bookings');
+      $this->db->from('requests');
       $this->db->where('status','pending');
       $query=$this->db->get();
       return $query;
@@ -50,7 +50,7 @@ class Booking_model extends CI_Model{
 
     public function getAcceptedBookings(){
       $this->db->select('*');
-      $this->db->from('bookings');
+      $this->db->from('requests');
       $this->db->where('status','accepted');
       $query=$this->db->get();
       return $query;

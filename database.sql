@@ -1,4 +1,5 @@
-DROP table bookings
+DROP table schedule
+DROP table requests
 DROP table users
 
 
@@ -12,8 +13,8 @@ CREATE TABLE users (
 );
 
 
-CREATE TABLE bookings(
-  bookingID int(11) PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE requests(
+  requestID int(11) PRIMARY KEY AUTO_INCREMENT,
   userID int(11),
   FOREIGN KEY (userID) REFERENCES users(userID),
   service varchar(255),

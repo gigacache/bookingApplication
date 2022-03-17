@@ -16,7 +16,7 @@ public function create(){
 
   public function getAllRequest(){
     $this->db->select('*');
-    $this->db->from('bookings');
+    $this->db->from('requests');
     $this->db->where('status','pending');
     $query=$this->db->get();
     return $query;
@@ -25,6 +25,7 @@ public function create(){
 
 
 public function sortSchedule($obj){
+  $count = 0;
     $timeInTheDay = array();
     $duration = array();
     echo "<br/>";
@@ -52,20 +53,60 @@ public function sortSchedule($obj){
                 $endTime = date("H:i", strtotime('+15 minutes', $startTime));
             }
 
-           echo "<br/> Appiontment:".$row['bookingID'];
+           echo "<br/> Appiontment:".$row['requestID'];
            echo "<br/> Starts ".date('H:i', strtotime($time));
            echo "<br/> Starts ". $endTime;
            echo "<br/> Service ".$row['service'];
            echo "<br/>";
 
-           $this->addToScheduler($row['userID'],$row['bookingDate'],$row['service'],$timeFormat,$endTime);
+           //$this->addToScheduler($row['userID'],$row['bookingDate'],$row['service'],$timeFormat,$endTime);
 
-            $timeInTheDay[$row['bookingID']] = $timeFormat . '-' . $endTime;
+            $timeInTheDay[$count][$row['requestID']] = $timeFormat . '-' . $endTime;
+
+
+
           }
+
 }
+
+
+
+
+
+
 print_r($timeInTheDay);
+$this->sortArray2D($timeInTheDay);
 return $timeInTheDay;
 }
+
+
+
+
+public function sortArray2D($timeInTheDay){
+
+  $previous=0;
+  $keys = array_keys($timeInTheDay);
+for($i = 0; $i < count($timeInTheDay); $i++) {
+    echo $keys[$i] . "{<br>";
+    foreach($timeInTheDay[$keys[$i]] as $key => $value) {
+      $t = explode("-", $value);
+      foreach($t as $tim){
+        if($previous == $tim){
+          echo "<br/>";
+
+        print($tim);
+        echo "<br/>";}
+        $previous = $tim;
+      }
+      print_r( $t);
+      //  echo $key . " : " . $value . "<br>";
+        $previous = $value;
+    }
+    echo "}<br>";
+}
+}
+
+
 
 
 
@@ -83,7 +124,9 @@ public function addToScheduler($userID,$bookingDate, $service,$startTime, $endTi
 public function getSchedule(){
   $this->db->select('*');
   $this->db->from('schedule');
+  $this->db->order_by('startTime', 'asc');
   $this->db->where('status','sechduling');
+  $this->db->where('bookingDate','2022-03-16');
   $query=$this->db->get();
   return $query;
 }
