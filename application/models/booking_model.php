@@ -43,6 +43,7 @@ class Booking_model extends CI_Model{
     public function allBookings(){
       $this->db->select('*');
       $this->db->from('requests');
+      $this->db->join('users', 'users.userID = requests.userID');
       $this->db->where('status','pending');
       $query=$this->db->get();
       return $query;
@@ -52,6 +53,13 @@ class Booking_model extends CI_Model{
       $this->db->select('*');
       $this->db->from('requests');
       $this->db->where('status','accepted');
+      $query=$this->db->get();
+      return $query;
+    }
+
+    public function getRequestDates(){
+      $this->db->select('*');
+      $this->db->from('requests');
       $query=$this->db->get();
       return $query;
     }

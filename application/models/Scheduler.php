@@ -8,16 +8,18 @@ class Scheduler extends CI_Model{
 
 
 public function create(){
-  $scheduleObj = $this->getAllRequest();
+  $date = $this->input->post('date');
+  $scheduleObj = $this->getAllRequest($date);
   $this->sortSchedule($scheduleObj);
-  return $this->getSchedule();
+  return $this->getSchedule($date);
 }
 
 
-  public function getAllRequest(){
+  public function getAllRequest($date){
     $this->db->select('*');
     $this->db->from('requests');
     $this->db->where('status','pending');
+    $this->db->where('bookingDate' , $date);
     $query=$this->db->get();
     return $query;
   }
@@ -89,16 +91,16 @@ public function addToScheduler($userID,$bookingDate, $service,$startTime, $endTi
     'service'=>$service,
     'startTime'=>$startTime,
     'endTime'	=>$endTime,
-    'status'=> 'sechduling'     );
+    'status'=> 'scheduled');
   return $this->db->insert('Schedule',$data);
   }
 
-public function getSchedule(){
+public function getSchedule($date){
   $this->db->select('*');
   $this->db->from('schedule');
+  $this->db->where('bookingDate' , $date);
+  $this->db->join('users', 'users.userID = schedule.userID');
   $this->db->order_by('startTime', 'asc');
-  $this->db->where('status','sechduling');
-  $this->db->where('bookingDate','2022-03-16');
   $query=$this->db->get();
   return $query;
 }
