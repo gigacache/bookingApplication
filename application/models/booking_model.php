@@ -71,5 +71,4 @@ class Booking_model extends CI_Model{
 
 
 
-
 } // End of CI_Model

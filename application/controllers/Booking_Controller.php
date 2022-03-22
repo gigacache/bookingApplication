@@ -45,10 +45,18 @@ class Booking_Controller extends CI_Controller {
 	}
 
 	public function createSchedule(){
-			$data["requestDates"] = $this->Booking_model->getRequestDates();
+		$data["requestDates"] = $this->Booking_model->getRequestDates();
 		$data["data"]= $this->Scheduler->create();
 		$data['main_view'] = 'schedulerView';
 		$this->load->view('template', $data);
+}
+
+public function showSchedule(){
+	$date = $this->input->post('date');
+	$data["requestDates"] = $this->Booking_model->getRequestDates();
+	$data["data"] = $this->Scheduler->getSchedule($date);
+	$data['main_view'] = 'schedulerView';
+	$this->load->view('template', $data);
 }
 
 
