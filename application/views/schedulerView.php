@@ -71,8 +71,6 @@
                Customer: <?php echo $row->name;?><br/>
                Location: <?php echo $row->postcode;?><br/>
                Schedule ID: <?php echo $row->scheduleID?>
-
-
             </p>
           </div>
         </div>
