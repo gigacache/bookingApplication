@@ -27,60 +27,55 @@ public function create(){
 
 
 public function sortSchedule($obj){
-  print_r($obj->result_array());
-  echo "<br/>";
-$startOfDay = '08:00';
-$startTime = strtotime($startOfDay);
-$storedStartTime = 0;
+  // Morning Session Time From 08:00 - 12:00
+  $startOfDay = '08:00';
+  $startTime = strtotime($startOfDay);
+  $storedStartTime = 0;
+  // Afternoon Session Time From 12:00 - 17:00
+  $midDay= '12:00';
+  $endDay= '17:00';
+  $midStartTime = strtotime($midDay);
+  $storedMidStartTime = 0;
 
-$midDay= '12:00';
-$endDay= '17:00';
-$minStartTime = strtotime($midDay);
-$storedminStartTime = 0;
-
-
-
-    foreach ($obj->result_array() as $row){
+  // Looping each Booking request Object
+  foreach ($obj->result_array() as $row){
 
         if($row['timeOfDay'] == 'Morning'){
-
-          $seconds2add = $this->durationOfService($row['service']);
-          $storedStartTime =+ $startTime;
-          $startTime+=$seconds2add;
-          echo '<br/>';
-          echo 'new time: ';
-          echo date('h:i',$startTime);
-          echo '<br/>';
-
-          $endTime = date('h:i',$startTime);
-
-          $this->addToScheduler($row['userID'],$row['bookingDate'], $row['service'],date('h:i',$storedStartTime), $endTime);
-
-          $startTime =+ $startTime;
-
-        }
+          if (!($startTime >= strtotime($midDay))){
+            $seconds2add = $this->durationOfService($row['service']);
+            $storedStartTime =+ $startTime;
+            $startTime+=$seconds2add;
+            $endTime = date('h:i',$startTime);
+              if (!($endTime == '01:00')){
+                $this->addToScheduler($row['userID'],$row['bookingDate'], $row['service'],date('h:i',$storedStartTime), $endTime);
+                $startTime =+ $startTime;
+              } else{echo"NOOOO";}
+            }
+            else{
+            echo "HELLOo";}
+          }
 
         if($row['timeOfDay'] == 'Afternoon'){
           $seconds2add = $this->durationOfService($row['service']);
-          $storedminStartTime =+ $minStartTime;
-          $minStartTime+=$seconds2add;
+          $storedMidStartTime =+ $midStartTime;
+          $midStartTime+=$seconds2add;
           echo '<br/>';
           echo 'new time: ';
-          echo date('h:i',$minStartTime);
+          echo date('h:i',$midStartTime);
           echo '<br/>';
 
-          $endTime = date('h:i',$minStartTime);
+          $endTime = date('h:i',$midStartTime);
 
-          $this->addToScheduler($row['userID'],$row['bookingDate'], $row['service'],date('h:i',$storedminStartTime), $endTime);
+          $this->addToScheduler($row['userID'],$row['bookingDate'], $row['service'],date('h:i',$storedMidStartTime), $endTime);
 
-          $minStartTime =+ $minStartTime;
+          $midStartTime =+ $midStartTime;
 
         }
 
 
 
 
-//if (!($minStartTime > strtotime($endDay)) ){
+//
 
 
 
@@ -108,10 +103,10 @@ public function durationOfService($service){
     $seconds2add = 1800;}
 
   if($service == 2){
-    $seconds2add = 1800;}
+    $seconds2add = 2700;}
 
   if($service == 3){
-    $seconds2add = 1800;}
+    $seconds2add = 3600;}
 
 
   return $seconds2add;}
