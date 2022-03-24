@@ -46,8 +46,9 @@
   <div class="row">
     <?php
     if($allBookingData->result()==null){?>
-      <h3>No Appointment are cheduled for this date, create a schedule for this date </h3>
+      <h3 class="NoDataMessage">There are no booking request at this time</h3>
     <?php } else{ ?>
+      <h3>All Booking Requests</h3>
       <table class="table">
         <thead class="thead-dark">
           <tr>
@@ -66,8 +67,6 @@
           <td><?php echo $row->bookingDate;?></td>
           <td><?php echo $row->timeOfDay?></td>
           <td><?php echo $row->status;?></td>
-          <td>
-          </td>
           <td>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal-<?php echo $row->requestID;?>">
               Details

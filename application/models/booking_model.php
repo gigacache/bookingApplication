@@ -58,7 +58,8 @@ class Booking_model extends CI_Model{
     }
 
     public function getRequestDates(){
-      $this->db->select('*');
+      $this->db->distinct();
+      $this->db->select('bookingDate');
       $this->db->from('requests');
       $query=$this->db->get();
       return $query;

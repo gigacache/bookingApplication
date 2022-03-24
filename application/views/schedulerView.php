@@ -44,34 +44,24 @@
      </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row my-5 mx-5">
 
     <table class="timeline">
       <tbody>
-
-
-
-
-
-
-
-
-
-
-
     <?php foreach ($data->result() as $row) {?>
       <tr>
         <th scope="row"><?php echo $row->startTime?></th>
         <td style="border-left: 5px solid #000;">
-      <a type="button" data-toggle="modal" data-target="#Modal-<?php echo $row->scheduleID;?>">
-        <div class="card card text-white bg-success mb-3" style="width: 18rem;">
-          <div class="card-header"><?php echo $row->startTime?> - <?php echo $row->endTime?></div>
+      <a type="button"  style="width: 100%;" data-toggle="modal" data-target="#Modal-<?php echo $row->scheduleID;?>">
+        <div class="card card text-white bg-success mb-3" style="width: 100%;">
+          <div class="card-header"><strong><?php echo $row->startTime?> - <?php echo $row->endTime?></strong></div>
           <div class="card-body">
-            <p>Service: <?php echo $row->service;?><br/>
-               Customer: <?php echo $row->name;?><br/>
-               Location: <?php echo $row->postcode;?><br/>
-               Schedule ID: <?php echo $row->scheduleID?>
-            </p>
+            <ul class="modalInfo">
+              <li><strong>Service:</strong>  <?php echo $row->service;?></li>
+              <li><strong>Customer:</strong>  <?php echo $row->name?></li>
+              <li><strong>Location:</strong>  <?php echo $row->postcode;?></li>
+              <li><strong>Booking ID:</strong>  <?php echo $row->scheduleID;?></li>
+            </ul>
           </div>
         </div>
       </a>
@@ -80,17 +70,30 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Appointment Details</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <?php echo $row->service;?>
-              <?php echo $row->email;?>
+              <h4>Appointment</h4>
+              <ul class="modalInfo">
+                <li><strong>Service:</strong>  <?php echo $row->service;?></li>
+                <li><strong>Time:</strong>  <?php echo $row->startTime?> - <?php echo $row->endTime;?></li>
+                <li><strong>Date:</strong>  <?php echo $row->bookingDate;?></li>
+                <li><strong>Booking ID:</strong>  <?php echo $row->scheduleID;?></li>
+              </ul>
+              <hr/>
+              <h4>Customer</h4>
+              <ul class="modalInfo">
+                <li><strong>Name:</strong> <?php echo $row->name;?></li>
+                <li><strong>Email:</strong>  <?php echo $row->email?></li>
+                <li><strong>Address: </strong> <?php echo $row->address;?></li>
+                <li><strong>Postcode:</strong>  <?php echo $row->postcode;?></li>
+              </ul>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
               <form method="post" action=<?php echo site_url('Booking_Controller/cancelBooking')?>>
                   <input value="<?php echo $row->scheduleID;?>" name="bookingID" style="display:none;">
                   <button type="submit" class="btn btn-danger">
@@ -98,9 +101,9 @@
                   <path d="M6.146 7.146a.5.5 0 0 1 .708 0L8 8.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 9l1.147 1.146a.5.5 0 0 1-.708.708L8 9.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 9 6.146 7.854a.5.5 0 0 1 0-.708z"/>
                   <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
                 </svg>
-                Cancel</button>
+                Cancel Appointment</button>
               </form>
-              <button type="button" class="btn btn-primary">Save changes</button>
+
             </div>
           </div>
         </div>
