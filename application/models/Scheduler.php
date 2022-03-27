@@ -20,6 +20,7 @@ public function create(){
     $this->db->from('requests');
     $this->db->where('status','pending');
     $this->db->where('bookingDate' , $date);
+    $this->db->order_by('timeOfDay', 'asc');
     $query=$this->db->get();
     return $query;
   }
@@ -31,6 +32,9 @@ public function sortSchedule($obj){
   $startOfDay = '08:00';
   $startTime = strtotime($startOfDay);
   $storedStartTime = 0;
+
+  $result = 'Scheduled';
+
   // Afternoon Session Time From 12:00 - 17:00
   $midDay= '12:00';
   $endDay= '17:00';
@@ -46,53 +50,33 @@ public function sortSchedule($obj){
             $storedStartTime =+ $startTime;
             $startTime+=$seconds2add;
             $endTime = date('h:i',$startTime);
+
               if (!($endTime == '01:00')){
-                $this->addToScheduler($row['userID'],$row['bookingDate'], $row['service'],date('h:i',$storedStartTime), $endTime);
+                $this->addToScheduler($row['userID'],$row['bookingDate'], $row['service'],date('h:i',$storedStartTime), $endTime , $row['requestID']);
                 $startTime =+ $startTime;
-              } else{echo"NOOOO";}
+              } else{ $result = 'Rejected';}
             }
-            else{
-            echo "HELLOo";}
+            else{$result = 'Rejected';}
           }
 
         if($row['timeOfDay'] == 'Afternoon'){
           $seconds2add = $this->durationOfService($row['service']);
           $storedMidStartTime =+ $midStartTime;
           $midStartTime+=$seconds2add;
-          echo '<br/>';
-          echo 'new time: ';
-          echo date('h:i',$midStartTime);
-          echo '<br/>';
-
           $endTime = date('h:i',$midStartTime);
 
-          $this->addToScheduler($row['userID'],$row['bookingDate'], $row['service'],date('h:i',$storedMidStartTime), $endTime);
+          $this->addToScheduler($row['userID'],$row['bookingDate'], $row['service'],date('h:i',$storedMidStartTime), $endTime, $row['requestID']);
 
           $midStartTime =+ $midStartTime;
 
         }
 
-
-
-
-//
-
-
-
-
-
-
-
-
-
-
+        $this->updateRequest($row['requestID'],$result);
 
 
 
       }
 }
-
-
 
 
 
@@ -113,22 +97,23 @@ public function durationOfService($service){
 
 
 
-public function addToScheduler($userID,$bookingDate, $service,$startTime, $endTime){
+public function addToScheduler($userID,$bookingDate, $service,$startTime, $endTime, $requestID){
   $data = array(
     'userID'=>$userID,
     'bookingDate'=>$bookingDate,
     'service'=>$service,
     'startTime'=>$startTime,
     'endTime'	=>$endTime,
-    'status'=> 'scheduled');
+    'status'=> 'scheduled',
+    'requestID'=> $requestID);
   return $this->db->insert('Schedule',$data);
   }
 
 
-public function updateRequest($userID){
-  $this->db->set('status', 'Scheduled');
-  $this->db->where('userID', $user);
-  $this->db->update('mytable');
+public function updateRequest($requestID, $result){
+  $this->db->set('status', $result);
+  $this->db->where('requestID', $requestID);
+  $this->db->update('requests');
 }
 
 

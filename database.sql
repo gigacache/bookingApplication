@@ -1,8 +1,3 @@
-DROP table schedule
-DROP table requests
-DROP table users
-
-
 CREATE TABLE users (
   userID int(11) PRIMARY KEY AUTO_INCREMENT,
   email varchar(255),
@@ -27,11 +22,14 @@ CREATE TABLE requests(
 CREATE TABLE schedule(
   scheduleID int(11) PRIMARY KEY AUTO_INCREMENT,
   userID int(11),
+  FOREIGN KEY (userID) REFERENCES users(userID),
   bookingDate DATE,
   service varchar(255),
   startTime varchar(255),
   endTime varchar(255),
-  status varchar(255)
+  status varchar(255),
+  requestID int(11),
+  FOREIGN KEY (requestID) REFERENCES requests(requestID)
 );
 
 INSERT INTO `users` ( `email`,`password`,`name`,`address`,`postcode`)
