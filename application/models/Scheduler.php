@@ -33,7 +33,7 @@ public function sortSchedule($obj){
   $startTime = strtotime($startOfDay);
   $storedStartTime = 0;
 
-  $result = 'Scheduled';
+  $result = 'scheduled';
 
   // Afternoon Session Time From 12:00 - 17:00
   $midDay= '12:00';
@@ -49,27 +49,34 @@ public function sortSchedule($obj){
             $seconds2add = $this->durationOfService($row['service']);
             $storedStartTime =+ $startTime;
             $startTime+=$seconds2add;
-            $endTime = date('h:i',$startTime);
+            $endTime = date('H:i',$startTime);
 
-              if (!($endTime == '01:00')){
-                $this->addToScheduler($row['userID'],$row['bookingDate'], $row['service'],date('h:i',$storedStartTime), $endTime , $row['requestID']);
+              if (!($endTime > '12:00')){
+                $this->addToScheduler($row['userID'],$row['bookingDate'], $row['service'],date('H:i',$storedStartTime), $endTime , $row['requestID']);
                 $startTime =+ $startTime;
-              } else{ $result = 'Rejected';}
-            }
-            else{$result = 'Rejected';}
+              } else{ $result = 'rejected';}
+            }else{$result = 'rejected';}
           }
 
         if($row['timeOfDay'] == 'Afternoon'){
+          if (!($midStartTime >= strtotime($endDay))){
           $seconds2add = $this->durationOfService($row['service']);
           $storedMidStartTime =+ $midStartTime;
           $midStartTime+=$seconds2add;
-          $endTime = date('h:i',$midStartTime);
-
-          $this->addToScheduler($row['userID'],$row['bookingDate'], $row['service'],date('h:i',$storedMidStartTime), $endTime, $row['requestID']);
-
+          $endTime = date('H:i',$midStartTime);
+          if (!($endTime > '17:00')){
+          $this->addToScheduler($row['userID'],$row['bookingDate'], $row['service'],date('H:i',$storedMidStartTime), $endTime, $row['requestID']);
           $midStartTime =+ $midStartTime;
+          } else{ $result = 'rejected';}
+        }else{$result = 'rejected';}
+  }
 
-        }
+
+
+
+
+
+
 
         $this->updateRequest($row['requestID'],$result);
 

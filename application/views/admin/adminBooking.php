@@ -1,4 +1,7 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');?>
+<h1>Booking Overview</h1>
+<p>Simply select a service, date and anytimes you would like to have your appiontment, then hit submit request</p>
+<hr/>
 <div class="conatainer shadow-lg p-3 mb-5 bg-body rounded customHeight">
   <div class="row">
     <div class="col-sm-4">
