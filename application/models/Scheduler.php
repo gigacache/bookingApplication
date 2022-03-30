@@ -8,16 +8,19 @@ class Scheduler extends CI_Model{
 
 
 public function create(){
-  $scheduleObj = $this->getAllRequest();
+  $date = $this->input->post('date');
+  $scheduleObj = $this->getAllRequest($date);
   $this->sortSchedule($scheduleObj);
-  return $this->getSchedule();
+  return $this->getSchedule($date);
 }
 
 
-  public function getAllRequest(){
+  public function getAllRequest($date){
     $this->db->select('*');
     $this->db->from('requests');
     $this->db->where('status','pending');
+    $this->db->where('bookingDate' , $date);
+    $this->db->order_by('timeOfDay', 'asc');
     $query=$this->db->get();
     return $query;
   }
@@ -25,108 +28,111 @@ public function create(){
 
 
 public function sortSchedule($obj){
-  $count = 0;
-    $timeInTheDay = array();
-    $duration = array();
-    echo "<br/>";
-    print_r($obj->result_array());
-    echo "<br/>";
+  // Morning Session Time From 08:00 - 12:00
+  $startOfDay = '08:00';
+  $startTime = strtotime($startOfDay);
+  $storedStartTime = 0;
 
-    foreach ($obj->result_array() as $row){
-        $times = $row['bookingTimes'];
-        $timesArray = explode(",", $times);
-        echo "<br/>";
-        $count =0;
-        // Adds times to times with booking ID in array
-          foreach($timesArray as $time){
-            $count++;
-            $timeFormat = date('H:i', strtotime($time));
-            $startTime = strtotime($time);
+  $result = 'scheduled';
 
-            if($row['service'] == 1){
-                $endTime = date("H:i", strtotime('+30 minutes', $startTime));
-            }
-            else if($row['service'] == 2){
-                $endTime = date("H:i", strtotime('+45 minutes', $startTime));
-            }
-            else if($row['service'] == 3){
-                $endTime = date("H:i", strtotime('+15 minutes', $startTime));
-            }
+  // Afternoon Session Time From 12:00 - 17:00
+  $midDay= '12:00';
+  $endDay= '17:00';
+  $midStartTime = strtotime($midDay);
+  $storedMidStartTime = 0;
 
-           echo "<br/> Appiontment:".$row['requestID'];
-           echo "<br/> Starts ".date('H:i', strtotime($time));
-           echo "<br/> Starts ". $endTime;
-           echo "<br/> Service ".$row['service'];
-           echo "<br/>";
+  // Looping each Booking request Object
+  foreach ($obj->result_array() as $row){
 
-           //$this->addToScheduler($row['userID'],$row['bookingDate'],$row['service'],$timeFormat,$endTime);
+        if($row['timeOfDay'] == 'Morning'){
+          if (!($startTime >= strtotime($midDay))){
+            $seconds2add = $this->durationOfService($row['service']);
+            $storedStartTime =+ $startTime;
+            $startTime+=$seconds2add;
+            $endTime = date('H:i',$startTime);
 
-            $timeInTheDay[$count][$row['requestID']] = $timeFormat . '-' . $endTime;
-
-
-
+              if (!($endTime > '12:00')){
+                $this->addToScheduler($row['userID'],$row['bookingDate'], $row['service'],date('H:i',$storedStartTime), $endTime , $row['requestID']);
+                $startTime =+ $startTime;
+              } else{ $result = 'rejected';}
+            }else{$result = 'rejected';}
           }
 
-}
+        if($row['timeOfDay'] == 'Afternoon'){
+          if (!($midStartTime >= strtotime($endDay))){
+          $seconds2add = $this->durationOfService($row['service']);
+          $storedMidStartTime =+ $midStartTime;
+          $midStartTime+=$seconds2add;
+          $endTime = date('H:i',$midStartTime);
+          if (!($endTime > '17:00')){
+          $this->addToScheduler($row['userID'],$row['bookingDate'], $row['service'],date('H:i',$storedMidStartTime), $endTime, $row['requestID']);
+          $midStartTime =+ $midStartTime;
+          } else{ $result = 'rejected';}
+        }else{$result = 'rejected';}
+  }
 
 
 
 
 
 
-print_r($timeInTheDay);
-$this->sortArray2D($timeInTheDay);
-return $timeInTheDay;
-}
+
+
+        $this->updateRequest($row['requestID'],$result);
 
 
 
-
-public function sortArray2D($timeInTheDay){
-
-  $previous=0;
-  $keys = array_keys($timeInTheDay);
-for($i = 0; $i < count($timeInTheDay); $i++) {
-    echo $keys[$i] . "{<br>";
-    foreach($timeInTheDay[$keys[$i]] as $key => $value) {
-      $t = explode("-", $value);
-      foreach($t as $tim){
-        if($previous == $tim){
-          echo "<br/>";
-
-        print($tim);
-        echo "<br/>";}
-        $previous = $tim;
       }
-      print_r( $t);
-      //  echo $key . " : " . $value . "<br>";
-        $previous = $value;
-    }
-    echo "}<br>";
-}
 }
 
 
 
 
+public function durationOfService($service){
+  $seconds2add = 0;
+  if($service == 1){
+    $seconds2add = 1800;}
 
-public function addToScheduler($userID,$bookingDate, $service,$startTime, $endTime){
+  if($service == 2){
+    $seconds2add = 2700;}
+
+  if($service == 3){
+    $seconds2add = 3600;}
+
+
+  return $seconds2add;}
+
+
+
+public function addToScheduler($userID,$bookingDate, $service,$startTime, $endTime, $requestID){
   $data = array(
     'userID'=>$userID,
     'bookingDate'=>$bookingDate,
     'service'=>$service,
     'startTime'=>$startTime,
     'endTime'	=>$endTime,
-    'status'=> 'sechduling'     );
+    'status'=> 'scheduled',
+    'requestID'=> $requestID);
   return $this->db->insert('Schedule',$data);
   }
 
-public function getSchedule(){
+
+public function updateRequest($requestID, $result){
+  $this->db->set('status', $result);
+  $this->db->where('requestID', $requestID);
+  $this->db->update('requests');
+}
+
+
+
+
+
+public function getSchedule($date){
   $this->db->select('*');
   $this->db->from('schedule');
+  $this->db->where('bookingDate' , $date);
+  $this->db->join('users', 'users.userID = schedule.userID');
   $this->db->order_by('startTime', 'asc');
-  $this->db->where('status','sechduling');
-  $this->db->where('bookingDate','2022-03-16');
   $query=$this->db->get();
   return $query;
 }

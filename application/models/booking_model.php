@@ -11,13 +11,13 @@ class Booking_model extends CI_Model{
     $userID = $this->session->userdata('userID'); // Where item is the array index like session id
     $service = $this->input->post('service');
     $date = $this->input->post('date');
-    $times = implode(',',$this->input->post('times'));
+    $timeOfDay = $this->input->post('timeOfDay');
     $status = "pending";
     $data = array(
       'userID'=>$userID,
       'service'=>$service,
       'bookingDate'=>$date,
-      'bookingTimes'=>$times,
+      'timeOfDay'=>$timeOfDay,
       'status'=> $status,
     );
     return $this->db->insert('requests',$data);
@@ -43,6 +43,7 @@ class Booking_model extends CI_Model{
     public function allBookings(){
       $this->db->select('*');
       $this->db->from('requests');
+      $this->db->join('users', 'users.userID = requests.userID');
       $this->db->where('status','pending');
       $query=$this->db->get();
       return $query;
@@ -56,6 +57,13 @@ class Booking_model extends CI_Model{
       return $query;
     }
 
+    public function getRequestDates(){
+      $this->db->distinct();
+      $this->db->select('bookingDate');
+      $this->db->from('requests');
+      $query=$this->db->get();
+      return $query;
+    }
 
 
 
