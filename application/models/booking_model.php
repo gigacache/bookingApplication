@@ -34,17 +34,17 @@ class Booking_model extends CI_Model{
     }
 
     public function cancelBooking(){
-      $userID = $this->session->userdata('userID');
-      $bookingID = $this->input->post('bookingID');
-      $this->db->where('requestID', $bookingID);
-      $this->db->delete('bookings');
+      $requestID = $this->input->post('requestID');
+      $this->db->set('status', 'canceled');
+      $this->db->where('requestID', $requestID);
+      $this->db->update('requests');
     }
 
     public function allBookings(){
       $this->db->select('*');
       $this->db->from('requests');
       $this->db->join('users', 'users.userID = requests.userID');
-      $this->db->where('status','pending');
+      $this->db->where_not_in('status', 'scheduled');
       $query=$this->db->get();
       return $query;
     }

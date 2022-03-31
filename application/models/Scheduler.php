@@ -131,10 +131,24 @@ public function getSchedule($date){
   $this->db->select('*');
   $this->db->from('schedule');
   $this->db->where('bookingDate' , $date);
+  $this->db->where('status' , 'scheduled');
   $this->db->join('users', 'users.userID = schedule.userID');
   $this->db->order_by('startTime', 'asc');
   $query=$this->db->get();
   return $query;
+}
+
+
+
+
+public function cancelAppointment(){
+  $requestID = $this->input->post('requestID');
+  echo $requestID;
+  $result = 'cancelled';
+  $this->updateRequest($requestID, $result);
+  $this->db->set('status', 'cancelled');
+  $this->db->where('requestID', $requestID);
+  $this->db->update('schedule');
 }
 
 
