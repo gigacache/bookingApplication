@@ -170,6 +170,11 @@ button.btn.dropdown-toggle.btn-light {
   overflow:scroll;
 }
 
+.largeCustomHeight{
+  height:85vh;
+  overflow:scroll;
+}
+
 #customTab{
   padding: 0px !important;
   margin:0px !important;

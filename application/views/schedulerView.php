@@ -1,17 +1,19 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');?>
-<h1>Booking Overview</h1>
-<p>Simply select a service, date and anytimes you would like to have your appiontment, then hit submit request</p>
-<hr/>
-<div class="conatainer shadow-lg p-3 mb-5 bg-body rounded customHeight">
-  <div class="row">
-    <div class="col-sm-4">
-      <a href="<?php echo site_url('adminbookings')?>" class="nav-link active  mx-1 my-1">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
-          <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
-        </svg></a>
-    </div>
 
+<div class="conatainer shadow-lg p-3 mb-5 bg-body rounded largeCustomHeight">
+  <div class="row my-3 mx-1">
+    <div class="col-sm-2">
+      <a href="<?php echo site_url('adminbookings')?>">
+        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+          <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+        </svg>
+      </a>
+    </div>
+    <div class="col-sm-10">
+      <h1>Schedule: <?php echo $date ?></h1>
+    </div>
   </div>
+
   <div class="row my-5 mx-5">
 
     <table class="timeline">

@@ -50,6 +50,8 @@ class Booking_Controller extends CI_Controller {
 	}
 
 	public function createSchedule(){
+		$date = $this->input->post('date');
+		$data["date"] = $date;
 		$data["requestDates"] = $this->Booking_model->getRequestDates();
 		$data["data"]= $this->Scheduler->create();
 		$data['main_view'] = 'schedulerView';
@@ -58,6 +60,7 @@ class Booking_Controller extends CI_Controller {
 
 public function showSchedule(){
 	$date = $this->input->post('date');
+	$data["date"] = $date;
 	$data["requestDates"] = $this->Booking_model->getRequestDates();
 	$data["data"] = $this->Scheduler->getSchedule($date);
 	$data['main_view'] = 'schedulerView';
