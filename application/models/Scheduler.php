@@ -90,13 +90,13 @@ public function sortSchedule($obj){
 
 public function durationOfService($service){
   $seconds2add = 0;
-  if($service == 1){
+  if($service == 'Service One'){
     $seconds2add = 1800;}
 
-  if($service == 2){
+  if($service == 'Service Two'){
     $seconds2add = 2700;}
 
-  if($service == 3){
+  if($service == 'Service Three'){
     $seconds2add = 3600;}
 
 

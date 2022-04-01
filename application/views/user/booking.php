@@ -49,9 +49,9 @@
                     <div class="input-group">
                       <h4>Select a service</h4>
                       <select class="selectpicker" name="service" data-width="100%" data-dropup-auto="false">
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="Servie One">Servie One 30 minutes</option>
+                        <option value="Service Two">Service Two 45 minutes</option>
+                        <option value="Service Three">Service Three 60 minutes</option>
                       </select>
                     </div>
                     <div class="input-group">

@@ -44,7 +44,6 @@ class Booking_model extends CI_Model{
       $this->db->select('*');
       $this->db->from('requests');
       $this->db->join('users', 'users.userID = requests.userID');
-      $this->db->where_not_in('status', 'scheduled');
       $query=$this->db->get();
       return $query;
     }
