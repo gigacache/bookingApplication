@@ -9,20 +9,21 @@ class Welcome_model extends CI_Model{
   public function verify(){
     $email = $this->input->post('email');
     $password = $this->input->post('password');
-    
-    $this->db->select('email,password');
+    $hashPass = $this->getPassword($email);
+    if(password_verify($password, $hashPass)) {
+    return true;
+    } else {
+        return false;
+    }
+
+  }
+
+  public function getPassword($email){
+    $this->db->select('password');
     $this->db->from('users');
     $this->db->where('email',$email);
-    $this->db->where('password',$password);
-    $password=$this->db->get()->row()->password;
-
-    return $query;
-
-if(password_verify($this->input->post('password'), $userRow['user_pass'])){
-
-
-
-    return $this->db->get_where('users' , $data)->row();
+    $password = $this->db->get()->row()->password;
+    return $password;
   }
 
 public function getUserId(){

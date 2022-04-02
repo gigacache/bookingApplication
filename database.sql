@@ -33,7 +33,7 @@ CREATE TABLE schedule(
 );
 
 INSERT INTO `users` ( `email`,`password`,`name`,`address`,`postcode`)
-VALUES ('admin@admin.com', 'admin', 'admin', '3 Manchester Way' , 'M15 7HJ' );
+VALUES ('admin@admin.com', 'admin', '$2y$10$7DRCuLvadeDW4As.dQEAGeiEKQPVfX53UInSO40TQ/3PqRme/pUAK', '3 Manchester Way' , 'M15 7HJ' );
 
 INSERT INTO `users` ( `email`,`password`,`name`,`address`,`postcode`)
-VALUES ('user@user.com', 'user', 'user', '4 Manchester Way' , 'M15 7HJ' );
+VALUES ('user@user.com', 'user', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', '4 Manchester Way' , 'M15 7HJ' );
