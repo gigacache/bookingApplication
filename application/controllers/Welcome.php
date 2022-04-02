@@ -47,9 +47,13 @@ class Welcome extends CI_Controller {
 	}
 
 	public function registerUser(){
+		if($this->Welcome_model->checkEmail()){
+				$this->session->set_flashdata('eroMessage','Email already exists');
+				redirect('');
+		}else{
 		$this->Welcome_model->signUp();
 		$this->session->set_flashdata('susMessage','Thankyou for regestring. Your account has now been actived and you can login.');
-		redirect('');
+		redirect('');}
 	}
 
 

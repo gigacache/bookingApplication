@@ -80,27 +80,27 @@ if($this->session->login==TRUE){redirect('dashboard');}?>
 					   <form method="post" action=<?php echo site_url('Welcome/registerUser')?>>
 							 <div class="form-group">
 								 <label for="name">Name</label>
-								 <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="John Doe" name="name">
+								 <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="John Doe" name="name" required>
 								 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 							 </div>
 						 <div class="form-group">
 							 <label for="Email">Email address</label>
-							 <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+							 <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email" name="email" required>
 							 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 						 </div>
 						 <div class="form-group">
 							 <label for="password">Password</label>
-							 <input type="password" class="form-control" id="password" placeholder="*********" name="password">
+							 <input type="password" class="form-control" id="password" placeholder="*********" name="password" required>
 							 <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
 						 </div>
 						 <div class="form-group">
 							 <label for="address">Address</label>
-							 <input type="text" class="form-control" id="adress" aria-describedby="adress" placeholder="All Saints, All Saints Building, Manchester" name="address">
+							 <input type="text" class="form-control" id="adress" aria-describedby="adress" placeholder="All Saints, All Saints Building, Manchester" name="address" required>
 							 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 						 </div>
 						 <div class="form-group">
 							 <label for="post">Postcode</label>
-							 <input type="text" class="form-control" id="post" aria-describedby="post" placeholder="M1 6AA" name=postcode>
+							 <input type="text" class="form-control" id="post" aria-describedby="post" placeholder="M1 6AA" name=postcode required>
 							 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 						 </div>
 						 <button type="submit" class="btn btn-primary">Register</button>

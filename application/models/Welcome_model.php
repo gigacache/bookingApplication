@@ -7,8 +7,21 @@
 class Welcome_model extends CI_Model{
 
   public function verify(){
-    $data['email'] = $this->input->post('email');
-    $data['password'] = $this->input->post('password');
+    $email = $this->input->post('email');
+    $password = $this->input->post('password');
+    
+    $this->db->select('email,password');
+    $this->db->from('users');
+    $this->db->where('email',$email);
+    $this->db->where('password',$password);
+    $password=$this->db->get()->row()->password;
+
+    return $query;
+
+if(password_verify($this->input->post('password'), $userRow['user_pass'])){
+
+
+
     return $this->db->get_where('users' , $data)->row();
   }
 
@@ -27,16 +40,28 @@ public function getUserId(){
     $password = $this->input->post('password');
     $address = $this->input->post('address');
     $postcode = $this->input->post('postcode');
-
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     $data = array(
       'email'=>$email,
-      'password'=>$password,
+      'password'=>$hashed_password,
       'name'=>$name,
       'address'=>$address,
       'postcode'=>$postcode,
     );
     return $this->db->insert('users',$data);
     }
+
+
+    public function checkEmail(){
+      $email = $this->input->post('email');
+      $this->db->select('email');
+      $this->db->from('users');
+      $this->db->where('email',$email);
+      $query=$this->db->get();
+      if($query->num_rows() > 0){
+       return true;}
+       else {return false;}
+      }
 
 
     public function getUserDetails(){
