@@ -74,6 +74,13 @@ a.nav-link {
   margin:5%;
 }
 
+#date{
+    width: 100%;
+    padding: 5px;
+    margin: 2% 0;
+    background-color: #f8f9fa;
+    border: none;
+}
 
 
 /**h1{

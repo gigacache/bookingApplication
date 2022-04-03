@@ -49,9 +49,9 @@
                     <div class="input-group">
                       <h4>Select a service</h4>
                       <select class="selectpicker" name="service" data-width="100%" data-dropup-auto="false">
-                        <option value="Servie One">Servie One 30 minutes</option>
-                        <option value="Service Two">Service Two 45 minutes</option>
-                        <option value="Service Three">Service Three 60 minutes</option>
+                        <option value="Servie One">Service One (30 minutes)</option>
+                        <option value="Service Two">Service Two (45 minutes)</option>
+                        <option value="Service Three">Service Three (60 minutes)</option>
                       </select>
                     </div>
                     <div class="input-group">
@@ -62,14 +62,10 @@
                       </select>
                     </div>
                      <h4>Select a date</h4>
-                    <div id="pick-inline"></div>
-                      <input type="text" id="input-inline" placeholder="Selected Date" name="date">
-
-
-
-
-                      <input value="<?php print_r($this->session->userID);?>" style="display:none;">
-                      <button type="submit" class="btn btn-primary btn-lg btn-block">Submit Booking Request</button>
+                     <input type="date" id="date" min="<?php echo date("Y-m-d"); ?>" max="2022-12-31" name="date">
+                     <input value="<?php print_r($this->session->userID);?>" style="display:none;">
+                     <br/>
+                      <button type="submit" class="btn btn-primary btn-lg btn-block text-center">Submit Booking Request</button>
                     </form>
                   </div>
                 </div>
@@ -90,12 +86,3 @@
      </div>
    </div>
  </div>
-
- <script>
- window.addEventListener("load", () => {
-   picker.attach({
-     target: "input-inline",
-     container: "pick-inline"
-   });
- });
- </script>

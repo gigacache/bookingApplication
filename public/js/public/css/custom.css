@@ -1,0 +1,74 @@
+a:hover{
+  color:black;
+}
+
+.btn-primary:hover {
+    color: #e56a04;
+    background-color: #fff;
+    border-color: #e56a04;
+}
+.mobNav{
+  width: 8rem;
+  height:100vh;
+}
+
+.navText{
+  font-size: 10pt;
+  font-weight: bold;
+  margin:0;
+}
+
+@media only screen and (max-width: 700px) {
+  .mobNav{
+    width: 4rem;
+}
+    .navText{
+      display: none;
+  }
+  }
+
+
+
+.form-floating {
+    margin: 2% 0;
+}
+
+hr {
+    margin: 2% 0 !important;
+}
+
+strong{
+  font-size: 20px;
+  background-color: green;
+  color:#fff;
+  padding:5px 10px;
+  border-radius: 8px;
+  margin-top:-50px;
+}
+
+.date{
+  text-align: right;
+  font-weight:bold;
+  display: inline-block;
+  float: right;
+}
+
+
+.buttonList:hover{
+color:#e56a04;
+}
+
+.form-signin{
+  margin: 5% 20%;
+  padding:5%;
+}
+
+.card-body {
+    height: 300px;
+    overflow: scroll;
+}
+
+.link{
+  margin:3%;
+  text-align: center;
+}
