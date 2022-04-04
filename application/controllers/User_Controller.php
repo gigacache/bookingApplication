@@ -1,11 +1,11 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class User_Controller extends CI_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Welcome_model');
+		$this->load->model('User_model');
 	}
 	public function index()
 	{
@@ -13,14 +13,16 @@ class Welcome extends CI_Controller {
 	}
 
 	public function verify(){
-		$check=$this->Welcome_model->verify();
+		$check=$this->User_model->verify();
 		if($check){
-			$isAdmin = FALSE;
-			$userId =$this->Welcome_model->getUserId();
+			$this->User_model->getRole();
+			$userId =$this->User_model->getUserId();
 			$email = $this->input->post('email');
 
-			if($email=='admin@admin.com'){
+			if($this->User_model->getRole()=='admin'){
 				$isAdmin= TRUE;}
+			if($this->User_model->getRole()=='customer'){
+					$isAdmin= FALSE;}
 
 			$arraydata = array(
 						'userID'  => $userId,
@@ -47,11 +49,11 @@ class Welcome extends CI_Controller {
 	}
 
 	public function registerUser(){
-		if($this->Welcome_model->checkEmail()){
+		if($this->User_model->checkEmail()){
 				$this->session->set_flashdata('eroMessage','Email already exists');
 				redirect('');
 		}else{
-		$this->Welcome_model->signUp();
+		$this->User_model->signUp();
 		$this->session->set_flashdata('susMessage','Thankyou for regestring. Your account has now been actived and you can login.');
 		redirect('');}
 	}
@@ -69,7 +71,7 @@ class Welcome extends CI_Controller {
 
 
 	public function userDetails(){
-		$data['userDetails']= $this->Welcome_model->getUserDetails();
+		$data['userDetails']= $this->User_model->getUserDetails();
 		$data['main_view'] = './user/userDetails';
 		$this->load->view('template', $data);
 	}

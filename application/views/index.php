@@ -25,21 +25,21 @@ if($this->session->login==TRUE){redirect('dashboard');}?>
       </svg>
       SmartBook</a>
     <ul class="navbar-nav px-3 nav nav-tabs"  role="tablist">
-      <li class="nav-item px-3">
+      <li class="nav-item px-3 my-3">
         <a class="nav-link p-0 homeTab"data-toggle="tab" href="#Login">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" class="bi bi-speedometer" viewBox="0 0 16 16">
-            <path d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
-            <path fill-rule="evenodd" d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z"/>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+            <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
           </svg>
           <span>Login</span>
         </a>
       </li>
-      <li class="nav-item px-3">
+      <li class="nav-item px-3 my-3">
       <a class="nav-link p-0 homeTab" data-toggle="tab" href="#Register">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" class="bi bi-calendar3" viewBox="0 0 16 16">
-        <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
-        <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+          <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+      <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+      </svg>
         <span>Register</span>
       </a>
       </li>
@@ -61,9 +61,9 @@ if($this->session->login==TRUE){redirect('dashboard');}?>
 		</div>
 		<div class="col-md-5 .visible-sm-block, hidden-sm)">
 			<div class="tab-content">
-			   <div class="tab-pane active py-3 px-3 shadow-sm rounded" id="Login">
+			   <div class="tab-pane active py-3 px-3 shadow-lg mb-5 bg-body rounded" id="Login">
           <h2>Login</h2>
-					 <form  method="POST" action=<?php echo site_url('Welcome/verify')?>>
+					 <form  method="POST" action=<?php echo site_url('User_Controller/verify')?>>
 					 	  <div class="form-group">
 					 	    <label for="Email">Email address</label>
 					 	    <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="example@email.com" name="email">
@@ -72,12 +72,13 @@ if($this->session->login==TRUE){redirect('dashboard');}?>
 					 	    <label for="exampleInputPassword1">Password</label>
 					 	    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="password" name="password">
 							</div>
-					 	  <button type="submit" class="btn btn-primary">Login</button>
+              <br/>
+					 	  <button type="submit" class="btn btn-primary btn-lg w-50">Login</button>
 					 	</form>
 				 </div>
-				 <div class="tab-pane py-3 px-3 shadow-sm rounded" id="Register">
+				 <div class="tab-pane py-3 px-3 shadow-lg mb-5 bg-body rounded" id="Register">
           <h2>Register</h2>
-					   <form method="post" action=<?php echo site_url('Welcome/registerUser')?>>
+					   <form method="post" action=<?php echo site_url('User_Controller/registerUser')?>>
 							 <div class="form-group">
 								 <label for="name">Name</label>
 								 <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="John Doe" name="name" required>
@@ -103,7 +104,8 @@ if($this->session->login==TRUE){redirect('dashboard');}?>
 							 <input type="text" class="form-control" id="post" aria-describedby="post" placeholder="M1 6AA" name=postcode required>
 							 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 						 </div>
-						 <button type="submit" class="btn btn-primary">Register</button>
+             <br/>
+						 <button type="submit" class="btn btn-primary btn-lg w-50">Register</button>
 					 </form>
 				 </div>
 			 </div>

@@ -4,7 +4,7 @@
 // Verifys Users - Inserts Users - Gets Session ID
 //------------------------------------------------------------------
 
-class Welcome_model extends CI_Model{
+class User_model extends CI_Model{
 
   public function verify(){
     $email = $this->input->post('email');
@@ -25,6 +25,16 @@ class Welcome_model extends CI_Model{
     $password = $this->db->get()->row()->password;
     return $password;
   }
+
+
+  public function getRole(){
+      $email = $this->input->post('email');
+      $this->db->select('role');
+      $this->db->from('users');
+      $this->db->where('email',$email);
+      $query=$this->db->get()->row()->role;
+      return $query;
+    }
 
 public function getUserId(){
    $email = $this->input->post('email');
@@ -48,6 +58,8 @@ public function getUserId(){
       'name'=>$name,
       'address'=>$address,
       'postcode'=>$postcode,
+      'score'=>0,
+      'role'=>'customer'
     );
     return $this->db->insert('users',$data);
     }
@@ -75,7 +87,7 @@ public function getUserId(){
     }
 
 
-  
+
 
 
 
