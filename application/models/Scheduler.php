@@ -143,7 +143,6 @@ public function getSchedule($date){
 
 public function cancelAppointment(){
   $requestID = $this->input->post('requestID');
-  echo $requestID;
   $result = 'cancelled';
   $this->updateRequest($requestID, $result);
   $this->db->set('status', 'cancelled');

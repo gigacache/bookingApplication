@@ -40,8 +40,12 @@ class Booking_Controller extends CI_Controller {
 
 	public function cancelAppointment(){
 		$this->Scheduler->cancelAppointment();
-		redirect('Booking_Controller/showSchedule');
+		redirect('adminbookings');
 	}
+
+
+
+
 
 	public function adminBooking(){
 		$data["allBookingData"] = $this->Booking_model->allBookings();
