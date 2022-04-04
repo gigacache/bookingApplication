@@ -20,6 +20,7 @@ class Booking_Controller extends CI_Controller {
 
 	public function bookingOverview(){
 		$data["bookingData"] = $this->Booking_model->getUsersBooking();
+		$data["scheduleData"] = $this->Booking_model->getUsersSchedule();
 		$data['main_view'] = './user/booking';
 		$this->load->view('template', $data);
 	}

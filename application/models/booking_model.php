@@ -33,6 +33,18 @@ class Booking_model extends CI_Model{
       return $query;
     }
 
+
+    public function getUsersSchedule(){
+      $userID = $this->session->userdata('userID');
+      $this->db->select('*');
+      $this->db->from('schedule');
+      $this->db->where('userID' , $userID);
+      $this->db->order_by('bookingDate', 'asc');
+      $this->db->order_by('startTime', 'asc');
+      $query=$this->db->get();
+      return $query;
+    }
+
     public function cancelBooking(){
       $requestID = $this->input->post('requestID');
       $this->db->set('status', 'canceled');
