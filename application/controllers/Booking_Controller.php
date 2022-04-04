@@ -34,17 +34,23 @@ class Booking_Controller extends CI_Controller {
 
 	public function cancelBooking(){
 		$this->Booking_model->cancelBooking();
-		$this->session->set_flashdata('susMessage','Booking Request has been cancled.');
-		redirect('bookings');
+		$this->session->set_flashdata('susMessage','Booking Request has been cancelled.');
+		if($this->session->userdata('isAdmin')){
+			redirect('adminbookings');
+		}
+		else{
+		redirect('bookings');};
 	}
 
 	public function cancelAppointment(){
 		$this->Scheduler->cancelAppointment();
-		redirect('adminbookings');
+		$this->session->set_flashdata('susMessage','Scheduled Appointment has been cancelled.');
+		if($this->session->userdata('isAdmin')){
+			redirect('adminbookings');
+		}
+		else{
+		redirect('bookings');};
 	}
-
-
-
 
 
 	public function adminBooking(){

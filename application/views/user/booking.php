@@ -198,7 +198,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <form method="post" action=<?php echo site_url('Booking_Controller/cancelBooking')?>>
+            <form method="post" action=<?php echo site_url('Booking_Controller/cancelAppointment')?>>
                 <input value="<?php echo $row->requestID;?>" name="requestID" style="display:none;">
                 <button type="submit" class="btn btn-danger">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-x" viewBox="0 0 16 16">
@@ -221,7 +221,7 @@
           <div class="input-group">
             <h4>Select a service</h4>
             <select class="selectpicker" name="service" data-width="100%" data-dropup-auto="false">
-              <option value="Servie One">Service One (30 minutes)</option>
+              <option value="Service One">Service One (30 minutes)</option>
               <option value="Service Two">Service Two (45 minutes)</option>
               <option value="Service Three">Service Three (60 minutes)</option>
             </select>
@@ -240,6 +240,10 @@
             <button type="submit" class="btn btn-primary btn-lg btn-block text-center">Submit Booking Request</button>
           </form>
         </div>
+        <?php if($this->session->flashdata('susMessage')==""){}else{
+          echo "<div class='alert alert-success my-5' role='alert'>";
+          echo $this->session->flashdata('susMessage') ;
+          echo "</div>" ;}?>
       </div>
     </div>
   </div>

@@ -243,6 +243,10 @@
            </form>
        </div>
    </div>
+   <?php if($this->session->flashdata('susMessage')==""){}else{
+     echo "<div class='alert alert-success my-5' role='alert'>";
+     echo $this->session->flashdata('susMessage') ;
+     echo "</div>" ;}?>
  </div>
 
 </div>

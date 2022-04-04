@@ -20,7 +20,9 @@ public function create(){
     $this->db->from('requests');
     $this->db->where('status','pending');
     $this->db->where('bookingDate' , $date);
+    $this->db->join('users', 'users.userID = requests.userID');
     $this->db->order_by('timeOfDay', 'asc');
+    $this->db->order_by('score', 'desc');
     $query=$this->db->get();
     return $query;
   }
