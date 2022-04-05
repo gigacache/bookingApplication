@@ -6,7 +6,6 @@
 
 class Booking_model extends CI_Model{
 
-
   public function addBooking(){
     $userID = $this->session->userdata('userID'); // Where item is the array index like session id
     $service = $this->input->post('service');

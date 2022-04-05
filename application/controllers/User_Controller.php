@@ -65,6 +65,8 @@ class User_Controller extends CI_Controller {
 	}
 
 	public function adminDashboard(){
+	//	$data['graphData']= $this->Data_model->Schedule();
+
 		$data['customerData']= $this->User_model->getAllCustomers();
 		$data['main_view'] = './admin/adminDashboard';
 		$this->load->view('template', $data);
@@ -90,7 +92,7 @@ class User_Controller extends CI_Controller {
 
 	public function updateUserDetails(){
 		$this->User_model->updateDetails();
-		$this->session->set_flashdata('susMessage','Thankyou for regestring. Your account has now been actived and you can login.');
+		$this->session->set_flashdata('susMessage','Your account details have been updated');
 		redirect('profile');
 	}
 
