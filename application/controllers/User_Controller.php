@@ -65,6 +65,7 @@ class User_Controller extends CI_Controller {
 	}
 
 	public function adminDashboard(){
+		$data['customerData']= $this->User_model->getAllCustomers();
 		$data['main_view'] = './admin/adminDashboard';
 		$this->load->view('template', $data);
 	}
@@ -75,6 +76,18 @@ class User_Controller extends CI_Controller {
 		$data['main_view'] = './user/userDetails';
 		$this->load->view('template', $data);
 	}
+
+
+	public function addUserScore(){
+		$this->User_model->addScore();
+		redirect('admin');
+	}
+
+	public function minusUserScore(){
+		$this->User_model->minusScore();
+		redirect('admin');
+	}
+
 
 
 }

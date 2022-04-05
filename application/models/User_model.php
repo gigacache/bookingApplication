@@ -87,7 +87,45 @@ public function getUserId(){
     }
 
 
+    public function getAllCustomers(){
+      $this->db->select('*');
+      $this->db->from('users');
+      $this->db->where('role','customer');
+      $query=$this->db->get();
+      return $query;
+    }
 
+
+
+    public function addScore(){
+      $userID = $this->input->post('userID');
+      $score = $this->getScore($userID);
+      $score++;
+      $this->updateScore($userID,$score);
+    }
+
+
+    public function minusScore(){
+      $userID = $this->input->post('userID');
+      $score = $this->getScore($userID);
+      $score = $score - 1;
+      $this->updateScore($userID,$score);
+    }
+
+
+    public function getScore($userID){
+      $this->db->select('score');
+      $this->db->from('users');
+      $this->db->where('userID',$userID);
+      $query=$this->db->get()->row()->score;
+      return $query;
+    }
+
+    public function updateScore($userID, $score){
+      $this->db->set('score', $score);
+      $this->db->where('userID', $userID);
+      $this->db->update('users');
+    }
 
 
 

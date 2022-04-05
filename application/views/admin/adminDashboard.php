@@ -12,11 +12,47 @@
     </div>
     <div class="col-sm-6">
       <div class="card">
-        <h5 class="card-header">Featured</h5>
+        <h5 class="card-header">Customer List</h5>
         <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <p class="card-text">Increase or Decrease customers score to prioritise customer within scheduling sequencing. Highter the score - Highter the priority. </p>
+          <table class="table">
+            <thead class="thead-dark">
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th></th>
+              <th>Score</th>
+              <th></th>
+            </tr>
+          </thead>
+        <tbody>
+          <?php  foreach ($customerData->result() as $row) {?>
+            <tr>
+              <td><?php echo $row->name;?></td>
+              <td><?php echo $row->email;?></td>
+              <td>
+                <form method="post" action=<?php echo site_url('User_Controller/minusUserScore')?>>
+                  <input value="<?php echo $row->userID;?>" name="userID" style="display:none;">
+                  <button type="submit" class="btn btn-danger">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
+    </svg></button>
+              </form>
+            </td>
+            <td class="text-center"><?php echo $row->score;?></td>
+            <td>
+            <form method="post" action=<?php echo site_url('User_Controller/addUserScore')?>>
+              <input value="<?php echo $row->userID;?>" name="userID" style="display:none;">
+              <button type="submit" class="btn btn-danger">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+    </svg></button>
+          </form>
+        </td>
+          </tr>
+        <?php }?>
+      </tbody>
+        </table>
         </div>
       </div>
     </div>

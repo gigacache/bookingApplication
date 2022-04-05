@@ -23,19 +23,19 @@
          <div class="form-group row">
            <label for="name" class="col-sm-2 col-form-label">Name</label>
            <div class="col-sm-10">
-             <input type="text" class="form-control" id="name" placeholder="<?php echo $row->name;?>" name="name">
+             <input type="text" class="form-control" id="name" value='<?php echo $row->name;?>' name="name">
            </div>
          </div>
          <div class="form-group row">
            <label for="adress" class="col-sm-2 col-form-label">Address</label>
            <div class="col-sm-10">
-             <input type="text" class="form-control" id="adress" placeholder="<?php echo $row->address;?>" name="Address">
+             <input type="text" class="form-control" id="adress" value="<?php echo $row->address;?>" name="Address">
            </div>
          </div>
          <div class="form-group row">
            <label for="postcode" class="col-sm-2 col-form-label">Postcode</label>
            <div class="col-sm-10">
-             <input type="text" class="form-control" id="postcode" placeholder="<?php echo $row->postcode;?>" name="postcode">
+             <input type="text" class="form-control" id="postcode" value="<?php echo $row->postcode;?>" name="postcode">
            </div>
          </div>
        <?php }?>
