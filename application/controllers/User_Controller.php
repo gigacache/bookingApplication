@@ -88,6 +88,13 @@ class User_Controller extends CI_Controller {
 		redirect('admin');
 	}
 
+	public function updateUserDetails(){
+		$this->User_model->updateDetails();
+		$this->session->set_flashdata('susMessage','Thankyou for regestring. Your account has now been actived and you can login.');
+		redirect('profile');
+	}
+
+
 
 
 }

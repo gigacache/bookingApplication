@@ -128,6 +128,26 @@ public function getUserId(){
     }
 
 
+    public function updateDetails(){
+      $userID = $this->session->userdata('userID');
+      $password = $this->input->post('password');
+      $name= $this->input->post('name');
+      $address = $this->input->post('address');
+      $postcode = $this->input->post('postcode');
+
+      if (!empty($password)) {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $this->db->set('password', $hashed_password);}
+
+      $data = array(
+              'name' => $name,
+              'address' => $address,
+              'postcode' => $postcode
+      );
+
+      $this->db->where('userID', $userID);
+      $this->db->update('users', $data);
+    }
 
 
 

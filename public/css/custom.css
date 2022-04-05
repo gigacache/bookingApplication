@@ -82,6 +82,11 @@ a.nav-link {
     border: none;
 }
 
+label{
+  display: inline-block;
+  font-weight: 900;
+  padding: 2% 0;
+}
 
 /**h1{
   font-weight: 900;

@@ -70,7 +70,7 @@ if($this->session->login==TRUE){redirect('dashboard');}?>
 					 	  </div>
 					 	  <div class="form-group">
 					 	    <label for="exampleInputPassword1">Password</label>
-					 	    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="password" name="password">
+					 	    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="*********" name="password">
 							</div>
               <br/>
 					 	  <button type="submit" class="btn btn-primary btn-lg w-50">Login</button>
@@ -82,27 +82,22 @@ if($this->session->login==TRUE){redirect('dashboard');}?>
 							 <div class="form-group">
 								 <label for="name">Name</label>
 								 <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="John Doe" name="name" required>
-								 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 							 </div>
 						 <div class="form-group">
 							 <label for="Email">Email address</label>
-							 <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email" name="email" required>
-							 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+							 <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="example@email.com" name="email" required>
 						 </div>
 						 <div class="form-group">
 							 <label for="password">Password</label>
 							 <input type="password" class="form-control" id="password" placeholder="*********" name="password" required>
-							 <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
 						 </div>
 						 <div class="form-group">
 							 <label for="address">Address</label>
 							 <input type="text" class="form-control" id="adress" aria-describedby="adress" placeholder="All Saints, All Saints Building, Manchester" name="address" required>
-							 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 						 </div>
 						 <div class="form-group">
 							 <label for="post">Postcode</label>
-							 <input type="text" class="form-control" id="post" aria-describedby="post" placeholder="M1 6AA" name=postcode required>
-							 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+							 <input type="text" class="form-control" id="post" aria-describedby="post" placeholder="M15 6AA" name="postcode" required>
 						 </div>
              <br/>
 						 <button type="submit" class="btn btn-primary btn-lg w-50">Register</button>
