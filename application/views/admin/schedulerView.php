@@ -20,7 +20,7 @@
       <tbody>
     <?php foreach ($data->result() as $row) {?>
       <tr>
-        <th scope="row"><?php echo $row->startTime?></th>
+        <th scope="row" class="hidden-xs"><?php echo $row->startTime?></th>
         <td style="border-left: 5px solid #000;">
       <a type="button"  style="width: 100%;" data-toggle="modal" data-target="#Modal-<?php echo $row->scheduleID;?>">
         <div class="card card text-white bg-success mb-3" style="width: 100%;">

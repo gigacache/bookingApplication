@@ -84,6 +84,21 @@ a.nav-link {
 
 
 
+#chartWrapper {
+    position: relative;
+    padding-bottom: 80%;
+    height: 0;
+    overflow:scroll;
+}
+#chart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+    height:100%;
+}
+
+
 #date{
     width: 100%;
     padding: 5px;
@@ -276,4 +291,12 @@ button.btn.dropdown-toggle.btn-light {
 @media only screen and (max-width: 630px) {
   .centerLayout{
     margin:10%;
+}
+
+
+
+@media only screen and (max-width: 769) {
+  body {
+    background-color: lightblue;
+  }
 }

@@ -4,7 +4,9 @@
       <div class="card">
         <h5 class="card-header">Appointment Overview</h5>
         <div class="card-body">
-          <div id="chart_div" style="width:100%; height: 100%;"></div>
+          <div id="chartWrapper">
+          <div id="chart"></div>
+        </div>
         </div>
       </div>
     </div>
@@ -13,6 +15,7 @@
         <h5 class="card-header">Customer List</h5>
         <div class="card-body">
           <p class="card-text">Increase or Decrease customers score to prioritise customer within scheduling sequencing. Highter the score - Highter the priority. </p>
+          <div class="table-responsive">
           <table class="table">
             <thead class="thead-dark">
             <tr>
@@ -51,6 +54,7 @@
         <?php }?>
       </tbody>
         </table>
+      </div>
         </div>
       </div>
     </div>
@@ -71,7 +75,7 @@
   ]);
 
   var options = {
-    height: 300,
+
     hAxis: {
       title: 'Appoinments',
       minValue: 0
@@ -81,7 +85,7 @@
     }
   };
 
-  var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+  var chart = new google.visualization.BarChart(document.getElementById('chart'));
 
   chart.draw(data, options);
 }

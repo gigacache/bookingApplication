@@ -2,7 +2,7 @@
 
 <div class="conatainer shadow-lg mb-5 bg-body rounded largeCustomHeight">
   <div class="row">
-    <div class="col-sm-6 px-4 py-3 largeCustomHeight">
+    <div class="col-md-6 px-4 py-3 largeCustomHeight">
       <div class="row">
         <h2 class="text-center">Booking Requests</h2>
           <div class="row text-center">
@@ -38,6 +38,7 @@
             </div>
               <div class="tab-content">
                 <div class="tab-pane active py-3" id="pending">
+                  <div class="table-responsive">
                   <table class="table">
                     <thead class="thead-dark">
                       <tr>
@@ -65,8 +66,10 @@
                   <?php }}?>
                 </tbody>
               </table>
+            </div>
               </div>
               <div class="tab-pane py-3" id="rejected">
+                <div class="table-responsive">
                 <table class="table">
                   <thead class="thead-dark">
                     <tr>
@@ -95,8 +98,10 @@
                 <?php }}?>
               </tbody>
             </table>
+          </div>
             </div>
             <div class="tab-pane py-3" id="cancelled">
+              <div class="table-responsive">
               <table class="table">
                 <thead class="thead-dark">
                   <tr>
@@ -125,8 +130,10 @@
               <?php }}?>
             </tbody>
           </table>
+        </div>
           </div>
           <div class="tab-pane py-3" id="scheduled">
+            <div class="table-responsive">
             <table class="table">
               <thead class="thead-dark">
                 <tr>
@@ -155,6 +162,7 @@
             <?php }}?>
           </tbody>
         </table>
+      </div>
         </div>
               </div>
               <?php foreach ($allBookingData->result() as $row) {?>
@@ -163,7 +171,7 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Request Details</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -196,7 +204,6 @@
                     </svg>
                     Cancel</button>
                   </form>
-                  <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
               </div>
             </div>
@@ -204,7 +211,7 @@
         <?php }?>
       </div>
     </div>
-    <div class="col-sm-6 px-3 py-3" style="background-color:#eee;">
+    <div class="col-md-6 px-3 py-3" style="background-color:#eee;">
         <h2 class="text-center">Generate Schedule</h2>
         <div class="row">
     <ul class="nav nav-tabs my-2 mx-2 " role="tablist">

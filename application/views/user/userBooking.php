@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');?>
 <div class="conatainer shadow-lg mb-5 bg-body rounded largeCustomHeight">
   <div class="row">
-    <div class="col-sm-6 px-4 py-3 largeCustomHeight">
+    <div class="col-md-6 px-4 py-3 largeCustomHeight">
       <div class="row">
         <h2 class="text-center">Booking Requests</h2>
           <div class="row text-center">
@@ -33,6 +33,7 @@
               </div>
               <div class="tab-content">
                 <div class="tab-pane active py-3" id="pending">
+                  <div class="table-responsive">
                   <table class="table">
                     <thead class="thead-dark">
                       <tr>
@@ -61,7 +62,9 @@
                   </tbody>
                 </table>
               </div>
+              </div>
               <div class="tab-pane py-3" id="rejected">
+                <div class="table-responsive">
                 <table class="table">
                   <thead class="thead-dark">
                     <tr>
@@ -84,8 +87,10 @@
                 <?php }}?>
               </tbody>
             </table>
+          </div>
             </div>
             <div class="tab-pane py-3" id="cancelled">
+              <div class="table-responsive">
               <table class="table">
                 <thead class="thead-dark">
                   <tr>
@@ -108,8 +113,10 @@
               <?php }}?>
             </tbody>
           </table>
+        </div>
           </div>
           <div class="tab-pane py-3" id="scheduled">
+            <div class="table-responsive">
             <table class="table">
               <thead class="thead-dark">
                 <tr>
@@ -138,6 +145,7 @@
             <?php }}?>
           </tbody>
         </table>
+      </div>
         </div>
               </div>
               <?php foreach ($bookingData->result() as $row) {?>
@@ -214,7 +222,7 @@
       <?php }?>
       </div>
     </div>
-    <div class="col-sm-6 px-3 py-3" style="background-color:#eee;">
+    <div class="col-md-6 px-3 py-3" style="background-color:#eee;">
       <h2 class="text-center">Submit Request</h2>
       <div class="row">
         <form method="post" action=<?php echo site_url('Booking_Controller/addBooking')?>>
