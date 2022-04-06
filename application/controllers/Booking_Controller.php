@@ -21,7 +21,7 @@ class Booking_Controller extends CI_Controller {
 	public function bookingOverview(){
 		$data["bookingData"] = $this->Booking_model->getUsersBooking();
 		$data["scheduleData"] = $this->Booking_model->getUsersSchedule();
-		$data['main_view'] = './user/booking';
+		$data['main_view'] = './user/userBooking';
 		$this->load->view('template', $data);
 	}
 
@@ -65,7 +65,7 @@ class Booking_Controller extends CI_Controller {
 		$data["date"] = $date;
 		$data["requestDates"] = $this->Booking_model->getRequestDates();
 		$data["data"]= $this->Scheduler->create();
-		$data['main_view'] = 'schedulerView';
+		$data['main_view'] = './admin/schedulerView';
 		$this->load->view('template', $data);
 }
 
@@ -74,7 +74,7 @@ public function showSchedule(){
 	$data["date"] = $date;
 	$data["requestDates"] = $this->Booking_model->getRequestDates();
 	$data["data"] = $this->Scheduler->getSchedule($date);
-	$data['main_view'] = 'schedulerView';
+	$data['main_view'] = './admin/schedulerView';
 	$this->load->view('template', $data);
 }
 

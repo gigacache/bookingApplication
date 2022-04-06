@@ -61,7 +61,11 @@ class User_Controller extends CI_Controller {
 
 
 	public function dashboard(){
-		$data['main_view'] = 'dashboard';
+		$data['scheduledData']= $this->Data_model->getUserScheduleData();
+		$data['rejectedData']= $this->Data_model->getUserRejectedData();
+		$data['cancelledData']= $this->Data_model->getUserCancelledData();
+		$data['pendingData']= $this->Data_model->getUserPendingData();
+		$data['main_view'] = './user/userDashboard';
 		$this->load->view('template', $data);
 	}
 

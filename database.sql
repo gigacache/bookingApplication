@@ -1,6 +1,6 @@
-DROP TABLE schedule;
-DROP TABLE requests;
-DROP TABLE users;
+-- DROP TABLE schedule;
+-- DROP TABLE requests;
+-- DROP TABLE users;
 
 CREATE TABLE users (
   userID int(11) PRIMARY KEY AUTO_INCREMENT,

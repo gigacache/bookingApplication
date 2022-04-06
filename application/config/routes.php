@@ -65,5 +65,5 @@ $route['profile'] = 'user_controller/userDetails';
 $route['newbooking'] = 'booking_controller/createBooking';
 $route['bookings'] = 'booking_controller/bookingOverview';
 $route['adminbookings'] = 'booking_controller/adminBooking';
-$route['manageSchedule'] = 'booking_controller/manageSchedule';
 $route['schedule'] = 'booking_controller/createSchedule';
+$route['viewschedule'] = 'booking_controller/showSchedule';

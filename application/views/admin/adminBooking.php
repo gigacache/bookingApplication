@@ -235,7 +235,7 @@
             </form>
           </div>
        <div class="tab-pane py-3" id="view">
-             <form method="post" action=<?php echo site_url('Booking_Controller/showSchedule')?>>
+             <form method="post" action=<?php echo site_url('viewschedule')?>>
                <select class="selectpicker w-100"  data-width="100%" data-dropup-auto="false" name="date">
                  <option value="Select A Date" selected disabled>Select a date</option>
                  <?php foreach($requestDates->result() as $row){?>

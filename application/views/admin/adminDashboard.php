@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');?>
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-md-6 my-3">
       <div class="card">
         <h5 class="card-header">Appointment Overview</h5>
         <div class="card-body">
@@ -8,7 +8,7 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-md-6 my-3">
       <div class="card">
         <h5 class="card-header">Customer List</h5>
         <div class="card-body">

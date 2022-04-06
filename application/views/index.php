@@ -46,7 +46,7 @@ if($this->session->login==TRUE){redirect('dashboard');}?>
     </ul>
   </nav>
 <!-- Welcom Page for users to login in or register to make an appiontment -->
-<div class="container my-4 mx-5">
+<div class="container py-4 px-5">
 	<?php if($this->session->flashdata('susMessage')==""){}else{
 		echo "<div class='alert alert-success' role='alert'>";
 		echo $this->session->flashdata('susMessage') ;
@@ -56,10 +56,10 @@ if($this->session->login==TRUE){redirect('dashboard');}?>
 			echo $this->session->flashdata('eroMessage') ;
 			echo "</div>" ;}?>
 	<div class="row">
-		<div class="col-md-7">
+		<div class="col-md-7 d-none d-md-block">
 				<img src="./public/images/booking.svg"/ class="largeImage">
 		</div>
-		<div class="col-md-5 .visible-sm-block, hidden-sm)">
+		<div class="col-md-5">
 			<div class="tab-content">
 			   <div class="tab-pane active py-3 px-3 shadow-lg mb-5 bg-body rounded" id="Login">
           <h2>Login</h2>
