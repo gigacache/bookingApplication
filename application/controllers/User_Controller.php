@@ -6,6 +6,7 @@ class User_Controller extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('User_model');
+			$this->load->model('Data_model');
 	}
 	public function index()
 	{
@@ -65,8 +66,10 @@ class User_Controller extends CI_Controller {
 	}
 
 	public function adminDashboard(){
-	//	$data['graphData']= $this->Data_model->Schedule();
-
+		$data['scheduledData']= $this->Data_model->getScheduleData();
+		$data['rejectedData']= $this->Data_model->getRejectedData();
+		$data['cancelledData']= $this->Data_model->getCancelledData();
+		$data['pendingData']= $this->Data_model->getPendingData();
 		$data['customerData']= $this->User_model->getAllCustomers();
 		$data['main_view'] = './admin/adminDashboard';
 		$this->load->view('template', $data);

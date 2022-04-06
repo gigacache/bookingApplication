@@ -2,11 +2,9 @@
   <div class="row">
     <div class="col-sm-6">
       <div class="card">
-        <h5 class="card-header">ADMIN</h5>
+        <h5 class="card-header">Appointment Overview</h5>
         <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <div id="chart_div" style="width:100%; height: 100%;"></div>
         </div>
       </div>
     </div>
@@ -57,3 +55,34 @@
       </div>
     </div>
   </div>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+  google.charts.load('current', {packages: ['corechart', 'bar']});
+  google.charts.setOnLoadCallback(drawBasic);
+
+  function drawBasic() {
+
+  var data = google.visualization.arrayToDataTable([
+    ['', 'Appointments',],
+    ['Pending', <?php echo $pendingData ?>],
+    ['Cancelled', <?php echo $cancelledData ?>],
+    ['Rejected', <?php echo $rejectedData ?>],
+    ['Scheduled', <?php echo $scheduledData ?>],
+  ]);
+
+  var options = {
+    height: 300,
+    hAxis: {
+      title: 'Appoinments',
+      minValue: 0
+    },
+    vAxis: {
+      title: 'Status'
+    }
+  };
+
+  var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+
+  chart.draw(data, options);
+}
+  </script>
