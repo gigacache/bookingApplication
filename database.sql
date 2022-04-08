@@ -2,6 +2,20 @@
 -- DROP TABLE requests;
 -- DROP TABLE users;
 
+-- Admin Password: admin
+-- User Password: user
+
+-- Change Setting For local db and protocols of application may not run.
+
+-- BaseUrl = $config['base_url'] = 'http://localhost:8888/bookingApplication/';
+-- Location: application/config/config.php
+
+-- Database: Name: booking-db / User: root / Password: root /
+-- Location: application/config/database.php
+
+-- Routes: application/config/routes.php - Shows all controller urls
+
+
 CREATE TABLE users (
   userID int(11) PRIMARY KEY AUTO_INCREMENT,
   email varchar(255),
