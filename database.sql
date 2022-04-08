@@ -15,6 +15,9 @@
 
 -- Routes: application/config/routes.php - Shows all controller urls
 
+-- Unit Tests can be viewed
+-- Location: http://localhost:8888/bookingApplication/index.php/Testing_Controller
+-- Testing_Controller
 
 CREATE TABLE users (
   userID int(11) PRIMARY KEY AUTO_INCREMENT,
