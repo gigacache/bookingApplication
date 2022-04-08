@@ -48,7 +48,7 @@ class Booking_model extends CI_Model{
       $requestID = $this->input->post('requestID');
       $this->db->set('status', 'cancelled');
       $this->db->where('requestID', $requestID);
-      $this->db->update('requests');
+      return $this->db->update('requests');
     }
 
     public function allBookings(){

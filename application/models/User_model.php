@@ -146,7 +146,7 @@ public function getUserId(){
       );
 
       $this->db->where('userID', $userID);
-      $this->db->update('users', $data);
+      return $this->db->update('users', $data);
     }
 
 
