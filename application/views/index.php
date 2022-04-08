@@ -16,6 +16,17 @@ if($this->session->login==TRUE){redirect('dashboard');}?>
     <meta charset="utf-8">
   </head>
 <body>
+<style>
+@media only screen and (max-width: 500px) {
+  li.nav-item.px-3 {
+    width: unset !important;
+    text-align: center !important;
+}
+.navbar-nav {
+    display: initial !important;
+    width: 100% !important;
+}
+}</style>
   <nav class="navbar bg-dark">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0 px-5" href="<?php echo base_url();?>">
       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-journal-code" viewBox="0 0 16 16">
