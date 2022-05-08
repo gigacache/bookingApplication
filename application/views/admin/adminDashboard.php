@@ -65,8 +65,7 @@
   google.charts.setOnLoadCallback(drawBasic);
 
   function drawBasic() {
-
-  var data = google.visualization.arrayToDataTable([
+    var data = google.visualization.arrayToDataTable([
     ['', 'Appointments',],
     ['Pending', <?php echo $pendingData ?>],
     ['Cancelled', <?php echo $cancelledData ?>],
@@ -75,7 +74,6 @@
   ]);
 
   var options = {
-
     hAxis: {
       title: 'Appoinments',
       minValue: 0

@@ -15,8 +15,7 @@ class User_model extends CI_Model{
     } else {
         return false;
     }
-
-  }
+}
 
   public function getPassword($email){
     $this->db->select('password');
