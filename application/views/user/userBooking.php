@@ -137,7 +137,7 @@
                   <td><?php echo $row->startTime;?></td>
                   <td><?php echo $row->status;?></td>
                   <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal-<?php echo $row->scheduleID;?>">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal-<?php echo $row->scheduleID;?>-">
                       Details
                     </button>
                   </td>
@@ -186,7 +186,7 @@
         <?php }?>
         <?php foreach ($scheduleData->result() as $row) {?>
       <!-- Modal -->
-      <div class="modal fade" id="Modal-<?php echo $row->scheduleID;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="Modal-<?php echo $row->scheduleID;?>-" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -242,7 +242,7 @@
             </select>
           </div>
            <h4>Select a date</h4>
-           <input type="date" id="date" min="<?php echo date("Y-m-d"); ?>" max="2022-12-31" name="date">
+           <input type="date" id="date" min="<?php echo date("Y-m-d"); ?>" max="2022-12-31" name="date" required>
            <input value="<?php print_r($this->session->userID);?>" style="display:none;">
            <br/>
             <button type="submit" class="btn btn-primary btn-lg btn-block text-center">Submit Booking Request</button>

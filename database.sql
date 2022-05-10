@@ -3,7 +3,7 @@
 -- DROP TABLE users;
 
 -- Admin Password: admin
--- User Password: user
+-- Users Password: user
 
 -- Change Settings For local db and protocols or application may not run.
 
@@ -82,40 +82,66 @@ VALUES ('user@user6.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMta
 INSERT INTO `users` ( `email`,`password`,`name`,`address`,`postcode`,`score`,`role`)
 VALUES ('user@user7.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'user7', '7 Manchester Way' , 'M15 7HJ' , 0 , 'customer' );
 
+INSERT INTO `users` ( `email`,`password`,`name`,`address`,`postcode`,`score`,`role`)
+VALUES ('user@user8.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'user8', '8 Manchester Way' , 'M15 7HJ' , 0 , 'customer' );
+
+INSERT INTO `users` ( `email`,`password`,`name`,`address`,`postcode`,`score`,`role`)
+VALUES ('user@user9.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'user9', '9 Manchester Way' , 'M15 7HJ' , 0 , 'customer' );
+
+INSERT INTO `users` ( `email`,`password`,`name`,`address`,`postcode`,`score`,`role`)
+VALUES ('user@user10.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'user10', '10 Manchester Way' , 'M15 7HJ' , 0 , 'customer' );
+
 
 INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
-VALUES ( '2', '3', CURDATE() , 'Morning' ,'pending' );
-
-
-INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
-VALUES ( '3', '2', CURDATE() , 'Morning' ,'pending' );
+VALUES ( '2', 'Service Three', CURDATE() , 'Morning' ,'pending' );
 
 INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
-VALUES ( '4', '1', CURDATE() , 'Morning' ,'pending' );
+VALUES ( '3', 'Service Two', CURDATE() , 'Morning' ,'pending' );
 
 INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
-VALUES ( '5', '2', CURDATE() , 'Morning' ,'pending' );
+VALUES ( '4', 'Service One', CURDATE() , 'Morning' ,'pending' );
 
 INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
-VALUES ( '6', '3', CURDATE() , 'Morning' ,'pending' );
+VALUES ( '5', 'Service Two', CURDATE() , 'Morning' ,'pending' );
 
 INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
-VALUES ( '7', '1', CURDATE() , 'Morning' ,'pending' );
+VALUES ( '6', 'Service Three', CURDATE() , 'Morning' ,'pending' );
 
 INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
-VALUES ( '2', '1', CURDATE() , 'Afternoon' ,'pending' );
+VALUES ( '7', 'Service One', CURDATE() , 'Morning' ,'pending' );
 
 INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
-VALUES ( '3', '2', CURDATE() , 'Afternoon' ,'pending' );
+VALUES ( '2', 'Service One', CURDATE() , 'Afternoon' ,'pending' );
 
 INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
-VALUES ( '4', '3', CURDATE() , 'Afternoon' ,'pending' );
+VALUES ( '3', 'Service Two', CURDATE() , 'Afternoon' ,'pending' );
 
 INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
-VALUES ( '5', '1', CURDATE() , 'Afternoon' ,'pending' );
+VALUES ( '4', 'Service Three', CURDATE() , 'Afternoon' ,'pending' );
 
 INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
-VALUES ( '6', '2', CURDATE() , 'Afternoon' ,'pending' );
+VALUES ( '5', 'Service One', CURDATE() , 'Afternoon' ,'pending' );
 
 INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
-VALUES ( '7', '3', CURDATE() , 'Afternoon' ,'pending' );
+VALUES ( '6', 'Service Two', CURDATE() , 'Afternoon' ,'pending' );
+
+INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
+VALUES ( '7', 'Service Three', CURDATE() , 'Afternoon' ,'pending' );
+
+INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
+VALUES ( '8', 'Service Three', CURDATE() , 'Morning' ,'pending' );
+
+INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
+VALUES ( '8', 'Service Three', CURDATE() , 'Afternoon' ,'pending' );
+
+INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
+VALUES ( '9', 'Service Two', CURDATE() , 'Morning' ,'pending' );
+
+INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
+VALUES ( '9', 'Service One', CURDATE() , 'Afternoon' ,'pending' );
+
+INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
+VALUES ( '10', 'Service Three', CURDATE() , 'Morning' ,'pending' );
+
+INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
+VALUES ( '10', 'Service One', CURDATE() , 'Afternoon' ,'pending' );
