@@ -35,7 +35,6 @@ public function sortSchedule($obj){
   $startTime = strtotime($startOfDay);
   $storedStartTime = 0;
 
-  $result = 'scheduled';
 
   // Afternoon Session Time From 12:00 - 17:00
   $midDay= '12:00';
@@ -52,12 +51,12 @@ public function sortSchedule($obj){
             $storedStartTime =+ $startTime;
             $startTime+=$seconds2add;
             $endTime = date('H:i',$startTime);
-
               if (!($endTime > '12:00')){
                 $this->addToScheduler($row['userID'],$row['bookingDate'], $row['service'],date('H:i',$storedStartTime), $endTime , $row['requestID']);
                 $startTime =+ $startTime;
-              } else{ $result = 'rejected';}
-            }else{$result = 'rejected';}
+                $this->updateRequest($row['requestID'],'scheduled');
+              } else{ $this->updateRequest($row['requestID'],'rejected');}
+            }else{$this->updateRequest($row['requestID'],'rejected');}
           }
 
         if($row['timeOfDay'] == 'Afternoon'){
@@ -66,26 +65,15 @@ public function sortSchedule($obj){
           $storedMidStartTime =+ $midStartTime;
           $midStartTime+=$seconds2add;
           $endTime = date('H:i',$midStartTime);
-          if (!($endTime > '17:00')){
-          $this->addToScheduler($row['userID'],$row['bookingDate'], $row['service'],date('H:i',$storedMidStartTime), $endTime, $row['requestID']);
-          $midStartTime =+ $midStartTime;
-          } else{ $result = 'rejected';}
-        }else{$result = 'rejected';}
-  }
-
-
-
-
-
-
-
-
-        $this->updateRequest($row['requestID'],$result);
-
-
-
+            if (!($endTime > '17:00')){
+              $this->addToScheduler($row['userID'],$row['bookingDate'], $row['service'],date('H:i',$storedMidStartTime), $endTime, $row['requestID']);
+              $midStartTime =+ $midStartTime;
+              $this->updateRequest($row['requestID'],'scheduled');
+            } else{ $this->updateRequest($row['requestID'],'rejected');}
+          }else{$this->updateRequest($row['requestID'],'rejected');}
       }
-}
+    }
+  }
 
 
 

@@ -75,7 +75,7 @@
 
   var options = {
     hAxis: {
-      title: 'Appoinments',
+      title: 'Appointments',
       minValue: 0
     },
     vAxis: {

@@ -59,37 +59,37 @@ INSERT INTO `users` ( `email`,`password`,`name`,`address`,`postcode`,`score`,`ro
 VALUES ('admin@admin.com', '$2y$10$7DRCuLvadeDW4As.dQEAGeiEKQPVfX53UInSO40TQ/3PqRme/pUAK', 'admin', '3 Manchester Way' , 'M15 7HJ' , 0 , 'admin' );
 
 INSERT INTO `users` ( `email`,`password`,`name`,`address`,`postcode`,`score`,`role`)
-VALUES ('user@user.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'user', '0 Manchester Way' , 'M15 7HJ' , 0 , 'customer' );
+VALUES ('Dan@user.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'Dan', '0 Manchester Way' , 'M15 7HJ' , 5 , 'customer' );
 
 INSERT INTO `users` ( `email`,`password`,`name`,`address`,`postcode`,`score`,`role`)
-VALUES ('user@user1.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'user1', '1 Manchester Way' , 'M15 7HJ' , 0 , 'customer' );
+VALUES ('Jack@user.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'Jack', '1 Manchester Way' , 'M15 7HJ' , 4 , 'customer' );
 
 INSERT INTO `users` ( `email`,`password`,`name`,`address`,`postcode`,`score`,`role`)
-VALUES ('user@user2.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'user2', '2 Manchester Way' , 'M15 7HJ' , 0 , 'customer' );
+VALUES ('Will@user.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'Will', '2 Manchester Way' , 'M15 7HJ' , 3 , 'customer' );
 
 INSERT INTO `users` ( `email`,`password`,`name`,`address`,`postcode`,`score`,`role`)
-VALUES ('user@user3.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'user3', '3 Manchester Way' , 'M15 7HJ' , 0 , 'customer' );
+VALUES ('James@user.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'James', '3 Manchester Way' , 'M15 7HJ' , 2 , 'customer' );
 
 INSERT INTO `users` ( `email`,`password`,`name`,`address`,`postcode`,`score`,`role`)
-VALUES ('user@user4.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'user4', '4 Manchester Way' , 'M15 7HJ' , 0 , 'customer' );
+VALUES ('Sam@user.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'Sam', '4 Manchester Way' , 'M15 7HJ' , 1 , 'customer' );
 
 INSERT INTO `users` ( `email`,`password`,`name`,`address`,`postcode`,`score`,`role`)
-VALUES ('user@user5.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'user5', '5 Manchester Way' , 'M15 7HJ' , 0 , 'customer' );
+VALUES ('Nick@user.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'Nick', '5 Manchester Way' , 'M15 7HJ' , 0 , 'customer' );
 
 INSERT INTO `users` ( `email`,`password`,`name`,`address`,`postcode`,`score`,`role`)
-VALUES ('user@user6.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'user6', '6 Manchester Way' , 'M15 7HJ' , 0 , 'customer' );
+VALUES ('Bart@user.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'Bart', '6 Manchester Way' , 'M15 7HJ' , 0 , 'customer' );
 
 INSERT INTO `users` ( `email`,`password`,`name`,`address`,`postcode`,`score`,`role`)
-VALUES ('user@user7.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'user7', '7 Manchester Way' , 'M15 7HJ' , 0 , 'customer' );
+VALUES ('Phill@user.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'Phill', '7 Manchester Way' , 'M15 7HJ' , 0 , 'customer' );
 
 INSERT INTO `users` ( `email`,`password`,`name`,`address`,`postcode`,`score`,`role`)
-VALUES ('user@user8.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'user8', '8 Manchester Way' , 'M15 7HJ' , 0 , 'customer' );
+VALUES ('Max@user.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'Max', '8 Manchester Way' , 'M15 7HJ' , 0 , 'customer' );
 
 INSERT INTO `users` ( `email`,`password`,`name`,`address`,`postcode`,`score`,`role`)
-VALUES ('user@user9.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'user9', '9 Manchester Way' , 'M15 7HJ' , 0 , 'customer' );
+VALUES ('Sue@user.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'Sue', '9 Manchester Way' , 'M15 7HJ' , 0 , 'customer' );
 
 INSERT INTO `users` ( `email`,`password`,`name`,`address`,`postcode`,`score`,`role`)
-VALUES ('user@user10.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'user10', '10 Manchester Way' , 'M15 7HJ' , 0 , 'customer' );
+VALUES ('Kate@user.com', '$2y$10$UN8rCLCZhfLS6upTZpiYD.28jjJLXCUvykztskMeijYMtaqRF3FQe', 'Kate', '10 Manchester Way' , 'M15 7HJ' , 0 , 'customer' );
 
 
 INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
@@ -141,7 +141,7 @@ INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
 VALUES ( '9', 'Service One', CURDATE() , 'Afternoon' ,'pending' );
 
 INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
-VALUES ( '10', 'Service Three', CURDATE() , 'Morning' ,'pending' );
+VALUES ( '10', 'Service Three', CURDATE() , 'Afternoon' ,'pending' );
 
 INSERT INTO `requests` ( `userID`,`service`,`bookingDate`,`timeOfDay`,`status`)
 VALUES ( '10', 'Service One', CURDATE() , 'Afternoon' ,'pending' );
